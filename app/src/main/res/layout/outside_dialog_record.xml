@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="175dp"
+    android:background="@color/outside_white">
+
+    <RelativeLayout
+        android:id="@+id/record"
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:layout_alignParentBottom="true"
+        android:paddingTop="40dp"
+        android:visibility="visible">
+
+        <com.example.lenovo.textviewspannerdalogexercise.view.msi.AudioRecordMicView
+            android:id="@+id/record_surfaceView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp" />
+
+        <Button
+            android:id="@+id/bt_record"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/outside_btn_record" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp"
+            android:text="长按倾听,松开识别"
+            android:textColor="#666666"
+            android:textSize="16sp" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_close"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_alignRight="@id/record"
+        android:layout_alignTop="@id/record"
+        android:background="@drawable/outside_btn_dialog_close_selector" />
+</RelativeLayout>

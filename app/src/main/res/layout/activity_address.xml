@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ADDRESSS!"
+        android:textColor="#000000"
+        android:textSize="30sp" />
+
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:switchMinWidth="20dp"
+        android:textOff="  "
+        android:textOn="  "
+        android:textSize="12sp"
+        android:thumb="@drawable/thumb"
+        android:track="@drawable/track" />
+
+    <Switch
+        android:id="@+id/switch2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textOff="  "
+        android:textOn="  "
+        android:thumb="@drawable/thumb"
+        android:track="@drawable/track" />
+
+    <Button
+        android:id="@+id/sliding_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="上滑浮现控件"/>
+</LinearLayout>

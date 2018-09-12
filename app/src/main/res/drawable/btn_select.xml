@@ -1,0 +1,6 @@
+<!-- btn_select.xml -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--<item android:drawable="@drawable/send_btn_pressed" android:state_pressed="true" />-->
+    <!--<item android:drawable="@drawable/send_btn_normal" />-->
+
+</selector>

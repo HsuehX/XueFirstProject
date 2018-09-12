@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <FrameLayout
+            android:id="@+id/tab_content"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.0"
+            android:background="#FFFFFF" />
+        
+        <ImageButton 
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/shouye_red"
+            />
+
+        <RadioGroup
+            android:id="@+id/rgs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:gravity="center"
+
+            android:orientation="horizontal">
+
+            <com.example.lenovo.textviewspannerdalogexercise.view.MyRadioButton
+                android:id="@+id/tab_a"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:button="@null"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="首页"
+                android:textSize="13sp" />
+
+            <com.example.lenovo.textviewspannerdalogexercise.view.MyRadioButton
+                android:id="@+id/tab_b"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:button="@null"
+                android:checked="true"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="分类"
+                android:textSize="13sp" />
+
+            <RadioButton
+                android:id="@+id/tab_c"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@color/white"
+                android:button="@null"
+                android:drawableTop="@drawable/gouwuche_bg"
+                android:gravity="center"
+                android:paddingTop="10dip" />
+
+            <RadioButton
+                android:id="@+id/tab_d"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:button="@null"
+                android:drawableTop="@drawable/faxian_radiobutton"
+                android:gravity="center"
+                android:text="发现"
+                android:textSize="13sp" />
+
+            <RadioButton
+                android:id="@+id/tab_e"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:background="@color/white"
+                android:button="@null"
+                android:drawableTop="@drawable/wode_radiobutton"
+                android:gravity="center"
+                android:text="我的"
+
+                android:textSize="13sp" />
+        </RadioGroup>
+    </LinearLayout>
+
+</RelativeLayout>

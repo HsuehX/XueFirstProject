@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="#f6f6f6"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_cancel"
+                android:layout_width="60dp"
+                android:layout_height="fill_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="12dp"
+                android:gravity="center_vertical|left"
+                android:text="取消"
+                android:textColor="@color/common_dialog_multiply_list_cancel_text_color" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="选择寄达地"
+                android:textColor="@color/common_dialog_title_text_color" />
+
+            <TextView
+                android:id="@+id/tv_confirm"
+                android:layout_width="60dp"
+                android:layout_height="fill_parent"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="12dp"
+                android:layout_weight="1"
+                android:gravity="center|right"
+                android:text="完成"
+                android:textColor="@color/common_dialog_multiply_list_cancel_text_color" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#cccccc" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <com.example.lenovo.textviewspannerdalogexercise.view.wheelview.WheelView
+                android:id="@+id/wl_province"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:singleLine="true" />
+
+            <com.example.lenovo.textviewspannerdalogexercise.view.wheelview.WheelView
+                android:id="@+id/wl_city"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:singleLine="true" />
+
+            <com.example.lenovo.textviewspannerdalogexercise.view.wheelview.WheelView
+                android:id="@+id/wl_county"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:singleLine="true" />
+
+            <com.example.lenovo.textviewspannerdalogexercise.view.wheelview.WheelView
+                android:id="@+id/wl_hour"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:visibility="gone" />
+
+            <com.example.lenovo.textviewspannerdalogexercise.view.wheelview.WheelView
+                android:id="@+id/wl_min"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--<View-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="30dp"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:layout_gravity="bottom"-->
+    <!--android:background="@drawable/shape_item_whell_gradual" />-->
+
+</FrameLayout>

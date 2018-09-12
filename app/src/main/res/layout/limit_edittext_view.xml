@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <EditText
+            android:id="@+id/cabinet_describe_et"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignLeft="@+id/relativeLayout"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/relativeLayout"
+            android:layout_marginRight="20dp"
+            android:background="@null"
+            android:gravity="top"
+            android:hint=""
+            android:maxLength="10"
+            android:text="" />
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+
+            <TextView
+                android:id="@+id/max_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="/10" />
+
+            <TextView
+                android:id="@+id/count_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/max_tv"
+                android:text="0" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

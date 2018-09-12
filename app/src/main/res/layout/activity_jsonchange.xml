@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="使用GSON进行JSON数据的处理"
+        android:textColor="#353535"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dip" />
+
+    <Button
+        android:id="@+id/bt_shitiToJson"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="实体类转换为JSON数据"
+        android:layout_marginTop="10dip" />
+
+    <Button
+        android:id="@+id/bt_jsonToShiti"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="JSON数据转换成实体类"
+        android:onClick="bt_create_student"
+        android:layout_marginTop="10dip" />
+    <Button
+        android:id="@+id/bt_listToJson"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="存有实体类的集合转换为JSON数据集合"
+        android:layout_marginTop="10dip"  />
+
+    <Button
+        android:id="@+id/bt_jsonToList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="JSON数据集合转换为存有实体类的集合"
+        android:layout_marginTop="10dip"  />
+
+
+
+</LinearLayout>

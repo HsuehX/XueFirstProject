@@ -1,0 +1,297 @@
+package com.example.lenovo.textviewspannerdalogexercise.activity;
+
+import android.Manifest;
+import android.content.ContentValues;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.example.lenovo.textviewspannerdalogexercise.R;
+import com.example.lenovo.textviewspannerdalogexercise.view.pictureluban.Luban;
+import com.example.lenovo.textviewspannerdalogexercise.view.pictureluban.OnCompressListener;
+import com.example.lenovo.textviewspannerdalogexercise.view.pictureluban.PhotoUtils;
+
+import java.io.File;
+import java.util.List;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import pub.devrel.easypermissions.AppSettingsDialog;
+import pub.devrel.easypermissions.EasyPermissions;
+import uk.co.senab.photoview.PhotoView;
+
+public class PictureLubanActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks {
+
+    private static final int CAMERA_REQUEST_CODE = 100;
+    private static final int PHOTO = 200;
+    private static final int CAMERA = 1;
+
+    @Bind(R.id.btn_take_photo)
+    Button btnTakePhoto;
+    @Bind(R.id.btn_open)
+    Button btnOpen;
+    @Bind(R.id.tv_yuan)
+    TextView tvYuan;
+    @Bind(R.id.tv_change)
+    TextView tvChange;
+    @Bind(R.id.iv_show_real)
+    PhotoView ivShow;
+    @Bind(R.id.iv_show_compress)
+    PhotoView ivShowCompress;
+
+    private String photoFile = "";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_picture_luban);
+        ButterKnife.bind(this);
+        initPersission();
+    }
+
+    @OnClick({R.id.btn_take_photo, R.id.btn_open})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.btn_take_photo:
+                photoFile = Environment.getExternalStorageDirectory() + File.separator + System.currentTimeMillis() + "TestLubanYuan.jpg";
+                Intent intentFromCapture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                // 判断存储卡是否可以用，可用进行存储
+                if (hasSdcard()) {
+                    File mFile = new File(photoFile);
+                    intentFromCapture.putExtra(MediaStore.Images.Media.ORIENTATION, 0);
+                    if (android.os.Build.VERSION.SDK_INT < 24) {
+                        // 从文件中创建uri
+                        intentFromCapture.putExtra(MediaStore.EXTRA_OUTPUT,
+                                Uri.fromFile(mFile));
+                    } else {
+                        //兼容android7.0 使用共享文件的形式
+                        ContentValues contentValues = new ContentValues(1);
+                        contentValues.put(MediaStore.Images.Media.DATA, mFile.getAbsolutePath());
+                        //检查是否有存储权限，以免崩溃
+                        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                                != PackageManager.PERMISSION_GRANTED) {
+                            //申请WRITE_EXTERNAL_STORAGE权限
+                            Toast.makeText(this, "请开启存储权限", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        intentFromCapture.putExtra(MediaStore.EXTRA_OUTPUT, this.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues));
+                    }
+
+                }
+                startActivityForResult(intentFromCapture, CAMERA_REQUEST_CODE);
+
+                break;
+            case R.id.btn_open:
+
+//                Intent intent1 = new Intent(Intent.ACTION_PICK, null);
+//                intent1.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+//                startActivityForResult(intent1, PHOTO);
+                photoFile = Environment.getExternalStorageDirectory() + File.separator + System.currentTimeMillis() + "TestLubanYuan.jpg";
+
+                Intent intentChoosePicture = new Intent(Intent.ACTION_PICK, null);
+
+                // 判断存储卡是否可以用，可用进行存储
+                if (hasSdcard()) {
+                    File mFile = new File(photoFile);
+                    intentChoosePicture.putExtra(MediaStore.Images.Media.ORIENTATION, 0);
+                    if (android.os.Build.VERSION.SDK_INT < 24) {
+                        // 从文件中创建uri
+                        intentChoosePicture.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,"image/*");
+                    } else {
+                        //兼容android7.0 使用共享文件的形式
+                        ContentValues contentValues = new ContentValues(1);
+                        contentValues.put(MediaStore.Images.Media.DATA, mFile.getAbsolutePath());
+                        //检查是否有存储权限，以免崩溃
+                        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                                != PackageManager.PERMISSION_GRANTED) {
+                            //申请WRITE_EXTERNAL_STORAGE权限
+                            Toast.makeText(this, "请开启存储权限", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+//                        intentChoosePicture.putExtra(MediaStore.EXTRA_OUTPUT, this.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues));
+                        intentChoosePicture.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,"image/*");
+                    }
+
+                }
+                startActivityForResult(intentChoosePicture, PHOTO);
+
+
+//                filePath = "这里是图片文件路径";
+//                Uri uri;
+//                if (android.os.Build.VERSION.SDK_INT >= 24) {
+//                    File file = new File(photoFile);
+//                    Log.i("mine",file.length()+"");
+//                    uri = FileProvider.getUriForFile(this, getApplicationContext().getPackageName() + ".provider", new File(photoFile));
+//                    intentChoosePicture.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);//注意加上这句话
+//
+//                } else {
+//                    uri = Uri.fromFile(new File(photoFile));
+//                }
+//                intentChoosePicture.setDataAndType(uri, "image/*");
+//                startActivityForResult(intentChoosePicture, PHOTO);
+                break;
+        }
+    }
+
+    private void initPersission() {
+        String perm[] = {Manifest.permission.CAMERA};
+        if (EasyPermissions.hasPermissions(this, perm)) {
+
+        } else {
+            EasyPermissions.requestPermissions(this, "需要摄像头权限权限", CAMERA, perm);
+        }
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            switch (requestCode) {
+                case CAMERA_REQUEST_CODE:
+//                    Glide.with(PictureLubanActivity.this).load(photoFile).centerCrop().crossFade().into(ivShow);//.centerCrop()加上这个属性，会使图片居中压缩截取
+                    Glide.with(PictureLubanActivity.this).load(photoFile).crossFade().into(ivShow);
+//                    tvYuan.setText("原图：图片大小" + photoFile.length() / 1024 + "k" + "图片尺寸："
+//                            + Luban.get(getApplicationContext()).getImageSize(photoFile.getPath())[0]
+//                            + " * " + Luban.get(getApplicationContext()).getImageSize(photoFile.getPath())[1]);
+//                    compressWithLs(photoFile);
+                    break;
+                case PHOTO:
+                    if (data != null) {// 为了取消选取不报空指针用的
+                        if (hasSdcard()) {
+                            //调用PhotoUtils（自写的非系统）中getPath方法（当前相册照片的Uri）
+                            Uri newUri = Uri.parse(PhotoUtils.getPath(this, data.getData()));
+
+                            Glide.with(PictureLubanActivity.this).load(newUri.getPath()).centerCrop().crossFade().into(ivShow);
+                        }
+
+//                        tvYuan.setText("原图：图片大小" + file.length() / 1024 + "k" + "图片尺寸："
+//                                + Luban.get(getApplicationContext()).getImageSize(file.getPath())[0]
+//                                + " * " + Luban.get(getApplicationContext()).getImageSize(file.getPath())[1]);
+//
+//                        compressWithLs(file);
+                    }
+                    break;
+            }
+        }
+    }
+
+    /**
+     * 压缩图片
+     */
+    private void compressWithLs(File file) {
+        Luban.get(this)
+                .load(file)
+                .putGear(Luban.THIRD_GEAR)
+                .setFilename(System.currentTimeMillis() + "")
+                .setCompressListener(new OnCompressListener() {
+                    @Override
+                    public void onStart() {
+                    }
+
+                    @Override
+                    public void onSuccess(File file) {
+                        Glide.with(PictureLubanActivity.this).load(file).centerCrop().crossFade().into(ivShowCompress);
+
+                        tvChange.setText("压缩后：图片大小" + file.length() / 1024 + "k" + "图片尺寸："
+                                + Luban.get(getApplicationContext()).getImageSize(file.getPath())[0]
+                                + " * " + Luban.get(getApplicationContext()).getImageSize(file.getPath())[1]);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+                }).launch();
+    }
+
+
+//    private void compressWithRx(File file) {
+//        Luban.get(this)
+//                .load(file) //加载图片
+//                .putGear(Luban.THIRD_GEAR)  //设置压缩等级
+//                .asObservable()     //返回一个Obsetvable观察者对象
+//                .subscribeOn(Schedulers.io())   //压缩指定IO线程
+//                .observeOn(AndroidSchedulers.mainThread())  //回调返回主线程
+//                .doOnError(new Action1<Throwable>() {
+//                    @Override
+//                    public void call(Throwable throwable) {     //运行异常回调
+//                        throwable.printStackTrace();
+//                    }
+//                })
+//                .onErrorResumeNext(new Func1<Throwable, Observable<? extends File>>() {
+//                    @Override
+//                    public Observable<? extends File> call(Throwable throwable) {   //异常处理
+//                        return Observable.empty();
+//                    }
+//                })
+//                .subscribe(new Action1<File>() {
+//                    @Override
+//                    public void call(File file) {
+//                        Glide.with(PictureLubanActivity.this).load(file).centerCrop().crossFade().into(ivShowCompress);
+//
+//                        Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+//                        Uri uri = Uri.fromFile(file);
+//                        intent.setData(uri);
+//                        PictureLubanActivity.this.sendBroadcast(intent);
+//
+//                        tvChange.setText("压缩后：图片大小" + file.length() / 1024 + "k" + "图片尺寸："
+//                                + Luban.get(getApplicationContext()).getImageSize(file.getPath())[0]
+//                                + " * " + Luban.get(getApplicationContext()).getImageSize(file.getPath())[1]);
+//                    }
+//                });
+//    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        // Forward results to EasyPermissions
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+    }
+
+
+    //成功
+    @Override
+    public void onPermissionsGranted(int requestCode, List<String> list) {
+        if (EasyPermissions.hasPermissions(this, Manifest.permission.RECORD_AUDIO)) {
+//            canGO();
+        }
+
+    }
+
+    //失败
+    @Override
+    public void onPermissionsDenied(int requestCode, List<String> list) {
+        if (EasyPermissions.somePermissionPermanentlyDenied(this, list)) {
+            new AppSettingsDialog.Builder(this, "需要开启摄像头权限，请到应用权限管理中打开权限")
+                    .setTitle("权限需求").build().show();
+        }
+    }
+
+    /**
+     * 是否有读取sd卡的权限
+     * @return
+     */
+    public static boolean hasSdcard() {
+        String state = Environment.getExternalStorageState();
+        if (state.equals(Environment.MEDIA_MOUNTED)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+}

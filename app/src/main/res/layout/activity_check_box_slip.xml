@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:gravity="center"
+                android:text="交接对象："
+                android:textColor="@color/common_dialog_title_text_color" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="6">
+
+                <TextView
+                    android:id="@+id/et_mailno"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:digits="@string/scan_mailno"
+                    android:gravity="center_vertical"
+
+                    android:imeOptions="actionDone"
+                    android:paddingLeft="5dp"
+                    android:singleLine="true"
+                    android:textColor="@color/common_dialog_title_text_color" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center"
+                    android:text="路单号："
+                    android:textColor="@color/common_dialog_title_text_color" />
+
+
+                <EditText
+                    android:id="@+id/et_ludanno"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:digits="@string/scan_mailno"
+                    android:hint=""
+                    android:imeOptions="actionDone"
+                    android:paddingLeft="5dp"
+                    android:singleLine="true"
+                    android:textColor="@color/common_dialog_title_text_color" />
+
+
+            </LinearLayout>
+
+            <ScrollView
+                android:id="@+id/scroll"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ListView
+                        android:id="@+id/peifa_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="500dp"
+                        android:layout_marginTop="5dp"
+                        android:descendantFocusability="blocksDescendants" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/button"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_weight="1"
+                            android:text="扫描配发" />
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_toRightOf="@+id/btn_saomiao"
+                            android:layout_weight="1"
+                            android:text="批量配发" />
+                    </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_saomiao"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:text="扫描配发" />
+
+                <Button
+                    android:id="@+id/btn_piliang"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_toRightOf="@+id/btn_saomiao"
+                    android:layout_weight="1"
+                    android:text="批量配发" />
+            </LinearLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/slip_bottom_sheet_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:visibility="gone"
+        app:behavior_hideable="true"
+        app:layout_behavior="@string/bottom_sheet_behavior">
+        <!--behavior_hideable 是当我们拖拽下拉的时候，bottom sheet是否能全部隐藏-->
+        <!--behavior_peekHeight是当Bottom Sheets关闭的时候，底部下表我们能看到的高度-->
+
+        <include layout="@layout/layout_bottom_sheet" />
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

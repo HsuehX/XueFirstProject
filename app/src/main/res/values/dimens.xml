@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <dimen name="folder_padding" >10dp</dimen>
+    <dimen name="folder_cover_size">72dp</dimen>
+    <dimen name="image_size" >120dp</dimen>
+    <dimen name="space_size" >5dp</dimen>
+    <dimen name="action_text_size" >16sp</dimen>
+
+    <dimen name="font_size_12">12sp</dimen>
+    <dimen name="font_size_13">13sp</dimen>
+    <dimen name="font_size_14">14sp</dimen>
+    <dimen name="font_size_15">15sp</dimen>
+    <dimen name="font_size_16">16sp</dimen>
+    <dimen name="font_size_17">17sp</dimen>
+    <dimen name="font_size_18">18sp</dimen>
+    <dimen name="font_size_20">20sp</dimen>
+    <dimen name="font_size_24">24sp</dimen>
+    <dimen name="font_size_36">36sp</dimen>
+
+    <dimen name="margin">10dp</dimen>
+    <dimen name="normal_margin">18dp</dimen>
+    <dimen name="little_margin">18dp</dimen>
+    <dimen name="mini_margin">10dp</dimen>
+    <!--评价标签类型之间的距离-->
+    <dimen name="evaluation_label_type_distance">5dp</dimen>
+    <!--评价标签类型内边距-->
+    <dimen name="evaluation_item_indistance">5dp</dimen>
+
+</resources>

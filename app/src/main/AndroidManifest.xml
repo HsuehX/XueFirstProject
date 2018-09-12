@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.lenovo.textviewspannerdalogexercise">
+    <!--摄像头-->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <!-- 在SDCard中创建与删除文件权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+
+    <!--SD卡读写权限-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+
+
+    <!-- 让UIL在SD卡上缓存图像 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!--SDSD卡写的权限-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <!--危险权限（麦克风）-->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!--一般权限-->
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+    <application
+        android:name=".App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!--<provider-->
+        <!--android:name="android.support.v4.content.FileProvider"-->
+        <!--android:authorities="com.example.lenovo.textviewspannerdalogexercise.provider"-->
+        <!--android:exported="false"-->
+        <!--android:grantUriPermissions="true">-->
+        <!--<meta-data-->
+        <!--android:name="android.support.FILE_PROVIDER_PATHS"-->
+        <!--android:resource="@xml/file_paths" />-->
+        <!--</provider>-->
+
+        <!--适配7.0的获取Uri-->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.example.lenovo.textviewspannerdalogexercise"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_path"></meta-data>
+        </provider>
+
+
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activity.AddressActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+            <meta-data
+                android:name="menuId"
+                android:value="PDA_PICKUP_RECVOKE"></meta-data>
+        </activity>
+
+
+        <activity
+            android:name=".activity.ItemCheckBoxActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+            <meta-data
+                android:name="menuId"
+                android:value="PDA_PICKUP_RECVOKE"></meta-data>
+        </activity>
+
+        <activity
+            android:name=".activity.SlidingActtivity"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+            <meta-data
+                android:name="menuId"
+                android:value="PDA_PICKUP_RECVOKE"></meta-data>
+        </activity>
+
+        <activity
+            android:name=".activity.JsonNetActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+            <meta-data
+                android:name="menuId"
+                android:value="PDA_PICKUP_RECVOKE"></meta-data>
+        </activity>
+
+
+        <activity
+            android:name=".activity.JsonChangeActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+            <meta-data
+                android:name="menuId"
+                android:value="PDA_PICKUP_RECVOKE"></meta-data>
+        </activity>
+
+        <activity
+            android:name=".activity.WebActivtiy"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+            <meta-data
+                android:name="menuId"
+                android:value="PDA_PICKUP_RECVOKE"></meta-data>
+        </activity>
+
+        <activity
+            android:name=".activity.ArrayAdapterActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+            <meta-data
+                android:name="menuId"
+                android:value="PDA_PICKUP_RECVOKE"></meta-data>
+        </activity>
+
+        <activity
+            android:name=".activity.PictureActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+            <meta-data
+                android:name="menuId"
+                android:value="PDA_PICKUP_RECVOKE"></meta-data>
+        </activity>
+
+        <activity
+            android:name=".activity.DrawingActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+            <meta-data
+                android:name="menuId"
+                android:value="PDA_PICKUP_RECVOKE"></meta-data>
+        </activity>
+
+        <activity
+            android:name=".activity.LineDrawingActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+            <meta-data
+                android:name="menuId"
+                android:value="PDA_PICKUP_RECVOKE"></meta-data>
+        </activity>
+
+        <activity
+            android:name=".activity.PortDrawingActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+            <meta-data
+                android:name="menuId"
+                android:value="PDA_PICKUP_RECVOKE"></meta-data>
+        </activity>
+
+        <activity
+            android:name=".activity.PortActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+            <meta-data
+                android:name="menuId"
+                android:value="PDA_PICKUP_RECVOKE"></meta-data>
+        </activity>
+
+        <activity
+            android:name=".activity.GetMapActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+            <meta-data
+                android:name="menuId"
+                android:value="PDA_PICKUP_RECVOKE"></meta-data>
+        </activity>
+
+        <activity
+            android:name=".activity.ListActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"></activity>
+
+        <activity
+            android:name=".activity.TestLoadViewActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"></activity>
+
+        <activity
+            android:name=".activity.SideslipActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"></activity>
+
+        <activity
+            android:name=".activity.SwipeListViewActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"></activity>
+
+        <activity
+            android:name=".activity.SwipeListViewDataActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden"></activity>
+
+        <activity
+            android:name=".activity.CopyQQListViewActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".activity.RemeberActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".activity.RadioButtonActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".activity.ChoosePictureActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.picture.PhotoPickerActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.picture.PhotoPreviewActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".activity.PictureLubanActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".activity.DynamicLayoutActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".SecondActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".activity.RefreshListActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".activity.AesEncryptionActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".activity.ZeroBuweiActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".activity.GifActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".activity.ReadWenJianActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".activity.PhoneticWritingActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".activity.AudioWeixinActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <!--<activity-->
+        <!--android:name=".activity.NetControlPictureSizeActivity"-->
+        <!--android:screenOrientation="portrait"></activity>-->
+
+        <activity
+            android:name=".activity.photo.activity.ChooseTakePhotoActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.photo.activity.CropActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".activity.PhotoCutting7Activity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".activity.OriginalHttpNetworkActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <!--onActivityResult页面之间跳转-->
+        <activity
+            android:name=".activity.onactivityresult.FirstActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.onactivityresult.SecondActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.onactivityresult.ThridActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <!--头像上传-->
+        <activity
+            android:name=".activity.uploadimage.ShangChuanActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <!--Recyclerview-->
+        <activity
+            android:name=".activity.RecyclerviewActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <!--聊天-->
+        <activity
+            android:name=".activity.CharActivity"
+            android:screenOrientation="portrait"></activity>
+
+
+        <!--二级联动-->
+        <activity
+            android:name=".activity.WheelViewDaActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <!--仿外卖评价-->
+        <activity
+            android:name=".activity.EvaluationActivity"
+            android:screenOrientation="portrait"></activity>
+
+
+        <!--仿微信图片朋友圈-->
+        <activity
+            android:name=".copywechatcircle.CopyWeChatCircleActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".copywechatcircle.ImagePagerActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <!--=-->
+        <activity
+            android:name=".activity.internet.SimpleRetrofitActivity"
+            android:screenOrientation="portrait"></activity>
+    </application>
+
+</manifest>

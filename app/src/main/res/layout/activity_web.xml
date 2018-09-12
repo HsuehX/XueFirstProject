@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <WebView
+        android:id="@+id/WebView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"></WebView>
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.example.lenovo.textviewspannerdalogexercise.view.AmountView
+        android:id="@+id/amount_view"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        app:btnTextSize="14sp"
+        app:btnWidth="36dp"
+        app:tvWidth="50dp"/>
+
+</LinearLayout>

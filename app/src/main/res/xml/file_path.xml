@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--代表外部存储区域的根目录下的文件 Environment.getExternalStorageDirectory()/my_images目录-->
+    <external-path name="my_images" path="."/>
+    <!--root-path代表/也就是Android设备的根目录，该目录下包含着手机内部存储器，外置SD卡等所有文件的目录-->
+    <root-path name="root_path" path="."/>
+    <!--该方式提供在应用的外部缓存区根目录的文件。它对应Context.getExternalCacheDir()返回的路径。
+    eg:"/storage/emulated/0/Android/data/com.jph.simple/cache"。-->
+    <external-cache-path name="name" path="." />
+</paths>

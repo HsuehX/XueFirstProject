@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--&lt;!&ndash; slidingMenu需要属性 &ndash;&gt;-->
+    <!--<declare-styleable name="SlidingMenu">-->
+    <!--<attr name="mode">-->
+    <!--<enum name="left" value="0" />-->
+    <!--<enum name="right" value="1" />-->
+    <!--</attr>-->
+    <!--<attr name="viewAbove" format="reference" />-->
+    <!--<attr name="viewBehind" format="reference" />-->
+    <!--<attr name="behindOffset" format="dimension" />-->
+    <!--<attr name="behindWidth" format="dimension" />-->
+    <!--<attr name="behindScrollScale" format="float" />-->
+    <!--<attr name="touchModeAbove">-->
+    <!--<enum name="margin" value="0" />-->
+    <!--<enum name="fullscreen" value="1" />-->
+    <!--<enum name="none" value="2" />-->
+    <!--</attr>-->
+    <!--<attr name="touchModeBehind">-->
+    <!--<enum name="margin" value="0" />-->
+    <!--<enum name="fullscreen" value="1" />-->
+    <!--<enum name="none" value="2" />-->
+    <!--</attr>-->
+    <!--<attr name="shadowDrawable" format="reference" />-->
+    <!--<attr name="shadowWidth" format="dimension" />-->
+    <!--<attr name="fadeEnabled" format="boolean" />-->
+    <!--<attr name="fadeDegree" format="float" />-->
+    <!--<attr name="selectorEnabled" format="boolean" />-->
+    <!--<attr name="selectorDrawable" format="reference" />-->
+    <!--</declare-styleable>-->
+    <!---->
+    <!---->
+    <!--&lt;!&ndash; =============================== &ndash;&gt;-->
+    <!--&lt;!&ndash; Slide 验证样式 支付刷卡UI &ndash;&gt;-->
+    <!--&lt;!&ndash; =============================== &ndash;&gt;-->
+    <!--<declare-styleable name="SlideIcon" >-->
+    <!--<attr name="StringToShow" format="reference" />-->
+    <!--<attr name="TextSize" format="dimension" />-->
+    <!--<attr name="TextColor" format="integer" />-->
+    <!--<attr name="SlideColor" format="integer" />-->
+    <!--</declare-styleable>-->
+    <!--<declare-styleable name="SlideBar">-->
+    <!--<attr name="MinVelocityXToUnlock" format="integer" />-->
+    <!--<attr name="MinDistanceToUnlock" format="integer" />-->
+    <!--<attr name="LeftAnimationDuratioin" format="integer" />-->
+    <!--<attr name="TextSize2" format="dimension" />-->
+    <!--<attr name="TextColor2" format="integer" />-->
+    <!--<attr name="RightAnimationDuratioin" format="integer" />-->
+    <!--</declare-styleable>-->
+
+    <!--&lt;!&ndash; 圆形头像属性 &ndash;&gt;-->
+    <!--<declare-styleable name="roundedimageview">-->
+    <!--<attr name="border_thickness" format="dimension" />-->
+    <!--<attr name="border_outside_width" format="dimension"></attr>-->
+    <!--<attr name="border_inside_color" format="color" />-->
+    <!--<attr name="border_outside_color" format="color"></attr>-->
+    <!--</declare-styleable>-->
+
+    <!-- 权限申请 -->
+    <string-array name="permissions">
+        <item>@string/permission_recode_audio_hint</item>
+        <item>@string/permission_get_accounts_hint</item>
+        <item>@string/permission_read_phone_hint</item>
+        <item>@string/permission_call_phone_hint</item>
+        <item>@string/permission_camera_hint</item>
+        <item>@string/permission_access_fine_location_hint</item>
+        <item>@string/permission_access_coarse_location_hint</item>
+        <item>@string/permission_read_external_hint</item>
+        <item>@string/permission_white_external_hint</item>
+    </string-array>
+
+
+    <declare-styleable name="MyRadioButton">
+        <attr name="drawableSize" format="dimension" />
+        <attr name="drawableTop" format="reference" />
+        <attr name="drawableLeft" format="reference" />
+        <attr name="drawableRight" format="reference" />
+        <attr name="drawableBottom" format="reference" />
+    </declare-styleable>
+
+</resources>

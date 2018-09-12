@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_nameaddress_ok"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:text="确定"
+            android:background="@color/Blue_700"
+            android:textColor="@color/outside_white" />
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/tv_nameaddress_ok">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <RelativeLayout
+                    android:id="@+id/rlayout_nameaddress_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="266dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_alignParentTop="true" />
+
+                    <ImageView
+                        android:id="@+id/image_send"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/image_send"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="8dp" />
+
+                            <TextView
+                                android:id="@+id/tv_nameaddress_phone_send"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="4dp"
+                                android:text="电话:" />
+
+                            <EditText
+                                android:id="@+id/edit_nameaddress_phone_send"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:background="@null"
+                                android:hint="请输入寄件人手机号"
+                                android:imeOptions="actionDone"
+                                android:inputType="phone"
+                                android:singleLine="true" />
+
+                            <ImageView
+                                android:id="@+id/iv_record"
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:layout_gravity="center_vertical|right"
+                                android:layout_marginLeft="8dp"
+                                android:src="@drawable/outside_icon_voice_nor" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:layout_marginLeft="8dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="8dp" />
+
+                            <TextView
+                                android:id="@+id/tv_nameaddress_name_send"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="4dp"
+                                android:text="姓名:" />
+
+                            <EditText
+                                android:id="@+id/edit_nameaddress_name_send"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:background="@null"
+                                android:hint="请输入寄件人姓名"
+                                android:imeOptions="actionDone"
+                                android:maxLength="20"
+                                android:singleLine="true" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:layout_marginLeft="8dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:id="@+id/llayout_nameaddress_area_send"
+                            android:layout_height="55dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="8dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="4dp"
+                                android:text="地区:" />
+
+                            <TextView
+                                android:id="@+id/tv_nameaddress_area_send"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:singleLine="true"
+                                android:text="" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:layout_marginLeft="8dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="8dp" />
+
+                            <TextView
+                                android:id="@+id/tv_nameaddress_detailaddress_send"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="4dp"
+                                android:text="详细地址:" />
+
+                            <EditText
+                                android:id="@+id/edit_nameaddress_detailaddress_send"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:background="@null"
+                                android:hint="请输入寄件人详细地址"
+                                android:imeOptions="actionDone"
+                                android:singleLine="true" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlayout_nameaddress_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="266dp"
+                    android:layout_below="@+id/rlayout_nameaddress_top"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_alignParentTop="true" />
+
+                    <ImageView
+                        android:id="@+id/image_collect"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_below="@+id/image_collect"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="8dp" />
+
+                            <TextView
+                                android:id="@+id/tv_nameaddress_phone_collect"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="4dp"
+                                android:text="电话:" />
+
+                            <EditText
+                                android:id="@+id/edit_nameaddress_phone_collect"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:background="@null"
+                                android:hint="请输入收件人手机号"
+                                android:imeOptions="actionDone"
+                                android:inputType="phone"
+                                android:singleLine="true" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:layout_marginLeft="8dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="8dp" />
+
+                            <TextView
+                                android:id="@+id/tv_nameaddress_name_collect"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="4dp"
+                                android:text="姓名:" />
+
+                            <EditText
+                                android:id="@+id/edit_nameaddress_name_collect"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:background="@null"
+                                android:hint="请输入收件人姓名"
+                                android:imeOptions="actionDone"
+                                android:maxLength="20"
+                                android:singleLine="true" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:layout_marginLeft="8dp" />
+
+                        <LinearLayout
+                            android:id="@+id/llayout_nameaddress_area_collect"
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="8dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="4dp"
+                                android:text="地区:" />
+
+                            <TextView
+                                android:id="@+id/tv_nameaddress_area_collect"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:singleLine="true"
+                                android:text="" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical" />
+
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1px"
+                            android:layout_marginLeft="8dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="55dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="8dp" />
+
+                            <TextView
+                                android:id="@+id/tv_nameaddress_detailaddress_collect"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="4dp"
+                                android:text="详细地址:" />
+
+                            <EditText
+                                android:id="@+id/edit_nameaddress_detailaddress_collect"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:background="@null"
+                                android:hint="请输入收件人详细地址"
+                                android:imeOptions="actionDone"
+                                android:singleLine="true" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </RelativeLayout>
+            </RelativeLayout>
+        </ScrollView>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

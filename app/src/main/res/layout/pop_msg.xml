@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation = "vertical"
+    android:paddingLeft = "23dip"
+    android:paddingTop = "35dip">
+    <TextView
+        android:id = "@+id/msgText1"
+        android:layout_width = "fill_parent"
+        android:layout_height = "wrap_content"
+        android:textSize = "12sp"
+        android:textColor = "#ff4f4f4f" ></TextView>
+    <TextView
+        android:id = "@+id/msgText2"
+        android:layout_width = "fill_parent"
+        android:layout_height = "wrap_content"
+        android:textSize = "14sp"
+        android:textColor = "#ffff0000"></TextView>
+    <TextView
+        android:id = "@+id/msgText3"
+        android:layout_width = "fill_parent"
+        android:layout_height = "wrap_content"
+        android:textSize = "13sp"
+        android:textColor = "#ff2f2f2f">
+    </TextView>
+</LinearLayout>
