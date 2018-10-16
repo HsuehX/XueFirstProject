@@ -22,10 +22,6 @@ public class SwipeToLoadHelper extends RecyclerView.OnScrollListener {
     private boolean isLoading = false;//是否正在加载中
     private boolean isSwipeToLoadEnabled = true;//上拉刷新功能是否开启
 
-    public interface LoadMoreListener {
-        void onLoad();
-    }
-
 
     /**
      * instanceof 判断其左边对象是否为其右边类的实例
@@ -96,7 +92,7 @@ public class SwipeToLoadHelper extends RecyclerView.OnScrollListener {
                     isLoading = true;
                     mWrapper.setLoadItemState(true);
                     if (moreListener != null) {
-                        moreListener.onLoad();
+                        moreListener.onLoadMore();
                     }
                 }
             }
@@ -122,7 +118,7 @@ public class SwipeToLoadHelper extends RecyclerView.OnScrollListener {
     /**
      * 设置LoadMore Item为加载完成状态, 上拉加载更多完成时调用
      */
-    public void setLoadMoreFinsh() {
+    public void setLoadMoreFinish() {
         isLoading = false;
         mWrapper.setLoadItemState(false);
     }
@@ -132,6 +128,10 @@ public class SwipeToLoadHelper extends RecyclerView.OnScrollListener {
      */
     public void setLoadMoreListener(LoadMoreListener loadMoreListener) {
         moreListener = loadMoreListener;
+    }
+
+    public interface LoadMoreListener {
+        void onLoadMore();
     }
 
 }

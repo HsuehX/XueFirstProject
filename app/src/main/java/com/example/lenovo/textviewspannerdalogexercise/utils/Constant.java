@@ -9,5 +9,7 @@ public class Constant {
     public final static String OPENID = "4A583075426D39326D4E343D";
     public final static String FOLLOW_TRUE = "1";
     public final static String FOLLOW_FALSE = "0";
+
+    public final static String SERVER_URL = "http://192.168.5.101:8080/";
 }
 

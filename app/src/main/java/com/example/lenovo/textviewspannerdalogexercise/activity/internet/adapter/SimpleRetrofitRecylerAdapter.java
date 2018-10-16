@@ -35,7 +35,7 @@ public class SimpleRetrofitRecylerAdapter extends RecyclerView.Adapter<SimpleRet
     }
 
     @Override
-    public SimpleRetrofitRecylerAdapter.ViewHolderSimpleRetrofit onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolderSimpleRetrofit onCreateViewHolder(ViewGroup parent, int viewType) {
         if ("Android".equals(requestType)) {
             return new ViewHolderSimpleRetrofit(View.inflate(mContext, R.layout.item_simple_retrofit, null));
         } else {

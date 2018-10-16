@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.example.lenovo.textviewspannerdalogexercise.activity.AesEncryptionActivity;
 import com.example.lenovo.textviewspannerdalogexercise.activity.AudioWeixinActivity;
 import com.example.lenovo.textviewspannerdalogexercise.activity.CharActivity;
+import com.example.lenovo.textviewspannerdalogexercise.activity.ChatLinkActivity;
 import com.example.lenovo.textviewspannerdalogexercise.activity.EvaluationActivity;
 import com.example.lenovo.textviewspannerdalogexercise.activity.GifActivity;
 import com.example.lenovo.textviewspannerdalogexercise.activity.NetControlPictureSizeActivity;
@@ -70,6 +71,8 @@ public class SecondActivity extends Activity {
     TextView simple_retrofit_tv;
     @Bind(R.id.tv_copy_wechat_circle)
     TextView tv_copy_wechat_circle;
+    @Bind(R.id.tv_chat_link)
+    TextView tv_chat_link;
 
 
     @Override
@@ -82,7 +85,7 @@ public class SecondActivity extends Activity {
     @OnClick({R.id.refresh_up_tv, R.id.aes_tv, R.id.buwei_tv, R.id.gif_tv, R.id.wenjian_tv, R.id.phonetic_writing_tv,
             R.id.audiowweixin_tv, R.id.net_picture_size_tv, R.id.original_http_network_tv, R.id.activityresult_tv,
             R.id.head_portrait_tv, R.id.recyclerview_tv, R.id.chat_tv, R.id.wheelview_tv, R.id.evaluation_tv,
-            R.id.simple_retrofit_tv, R.id.tv_copy_wechat_circle})
+            R.id.simple_retrofit_tv, R.id.tv_copy_wechat_circle, R.id.tv_chat_link})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.refresh_up_tv:
@@ -152,6 +155,10 @@ public class SecondActivity extends Activity {
             case R.id.tv_copy_wechat_circle:
                 Intent copy_wechat_circleIntent = new Intent(SecondActivity.this, CopyWeChatCircleActivity.class);
                 startActivity(copy_wechat_circleIntent);
+                break;
+            case R.id.tv_chat_link:
+                Intent tv_chat_linkIntent = new Intent(SecondActivity.this, ChatLinkActivity.class);
+                startActivity(tv_chat_linkIntent);
                 break;
             default:
                 break;

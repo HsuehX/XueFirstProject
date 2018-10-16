@@ -53,6 +53,8 @@ import com.example.lenovo.textviewspannerdalogexercise.view.PCCodeDialog;
 import com.example.lenovo.textviewspannerdalogexercise.view.SimpleAdapter;
 import com.example.lenovo.textviewspannerdalogexercise.view.SimpleDialog;
 import com.example.lenovo.textviewspannerdalogexercise.view.wheelview.DataPickerPopWindow;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -60,6 +62,8 @@ import java.util.Date;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnEditorAction;
 
 
 public class MainActivity extends Activity implements View.OnClickListener, DataPickerPopWindow.PopDataPickerWindow, View.OnTouchListener, PermissionUtils.PermissionGrant {
@@ -127,6 +131,9 @@ public class MainActivity extends Activity implements View.OnClickListener, Data
 
     private TextView second_activity;
 
+    @Bind(R.id.network_img)
+    ImageView network_img;
+
 //
 //    // 要申请的权限
 //    private String[] permissions = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
@@ -138,6 +145,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Data
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
 //        view = View.inflate(this, R.layout.activity_main, null);
 //        setContentView(view);
@@ -158,6 +166,13 @@ public class MainActivity extends Activity implements View.OnClickListener, Data
 //                showDialogTipUserRequestPermission();
 //            }
 //        }
+
+        ImageLoader imageLoader;
+        imageLoader = ImageLoader.getInstance();
+        imageLoader.init(ImageLoaderConfiguration.createDefault(this));
+        String url = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537415647&di=4f1035fa197d6095ac2a28d158f051cb&imgtype=jpg&er=1&src=http%3A%2F%2Fs2.sinaimg.cn%2Fmw690%2F0033IWKhty6JxB2zWdH61";
+        imageLoader.displayImage(url, network_img);
+
 
         second_activity = (TextView) findViewById(R.id.second_activity);
         second_activity.setOnClickListener(this);
@@ -427,6 +442,20 @@ public class MainActivity extends Activity implements View.OnClickListener, Data
                 }
             }
         });
+    }
+
+
+    /**
+     * 软键盘回车监听事件
+     * 结合butterknife
+     */
+    @OnEditorAction(R.id.edit_input_two)
+    public boolean OnEditorAction(KeyEvent keyEvent) {
+        Toast.makeText(this, "" + mInputTwoEt.getText().toString(), Toast.LENGTH_SHORT).show();
+        mInputTwoEt.setText("" + mInputTwoEt.getText().toString() + "+++");
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(getWindow().getDecorView().getWindowToken(), 0);
+        return true;
     }
 
 

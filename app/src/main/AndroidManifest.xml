@@ -335,6 +335,11 @@
         <activity
             android:name=".activity.internet.SimpleRetrofitActivity"
             android:screenOrientation="portrait"></activity>
+
+
+        <activity
+            android:name=".activity.ChatLinkActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

@@ -41,7 +41,7 @@ public class RecylerViewAdapterWrapper extends RecyclerView.Adapter {
     private int mAdapterType = ADAPTER_TYPE_LINEAR;//线性类型
     private int mSpanCount;//网格布局的网格数量
 
-    private HolderView mWrapperHolder;
+    private RecylerViewViewHolder mWrapperHolder;
 
     public RecylerViewAdapterWrapper(RecyclerView.Adapter adapter) {
         mAdapter = adapter;
@@ -72,7 +72,7 @@ public class RecylerViewAdapterWrapper extends RecyclerView.Adapter {
 //        HolderView holderView = null;
         if (viewType == ITEM_TYPE_LOAD) {
             if (mWrapperHolder == null) {
-                mWrapperHolder = new HolderView(View.inflate(parent.getContext(), R.layout.item_simple_retrofit_load_more, null));
+                mWrapperHolder = new RecylerViewViewHolder(View.inflate(parent.getContext(), R.layout.item_simple_retrofit_load_more, null));
             }
             return mWrapperHolder;
         } else {
@@ -103,9 +103,11 @@ public class RecylerViewAdapterWrapper extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        if (mAdapterType == ADAPTER_TYPE_LINEAR) {//正常线性的RecyclerView
+        if (mAdapterType == ADAPTER_TYPE_LINEAR) {
+            //正常线性的RecyclerView
             return mShowLoadItem ? mAdapter.getItemCount() + 1 : mAdapter.getItemCount();
-        } else {// 网格布局
+        } else {
+            // 网格布局
             if (!mShowLoadItem) {
                 return mAdapter.getItemCount();// 不显示load more时直接返回真实数量
             }
@@ -156,7 +158,7 @@ public class RecylerViewAdapterWrapper extends RecyclerView.Adapter {
     }
 
 
-    class HolderView extends RecyclerView.ViewHolder {
+    class RecylerViewViewHolder extends RecyclerView.ViewHolder {
 
         @Bind(R.id.item_load_tv)
         TextView mLoadTv;
@@ -164,7 +166,7 @@ public class RecylerViewAdapterWrapper extends RecyclerView.Adapter {
         @Bind(R.id.item_load_pb)
         ProgressBar mLoadPb;
 
-        HolderView(View itemView) {
+        RecylerViewViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }

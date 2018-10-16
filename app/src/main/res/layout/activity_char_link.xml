@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btn_link"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#e3e3e3"
+        android:gravity="center"
+        android:text="点击链接" />
+
+    <EditText
+        android:id="@+id/m_content_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#e3e3e3"
+        android:gravity="center"
+        android:text="输入内容" />
+
+    <Button
+        android:id="@+id/m_sent_bt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#e3e3e3"
+        android:gravity="center"
+        android:text="发送" />
+
+    <Button
+        android:id="@+id/btn_close"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#e3e3e3"
+        android:gravity="center"
+        android:text="断开链接" />
+
+    <TextView
+        android:id="@+id/m_content_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#e3e3e3"
+        android:gravity="center"
+        android:text="" />
+
+</LinearLayout>

@@ -6,6 +6,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -57,7 +58,7 @@ public class SimpleRetrofitActivity extends BaseActivity implements SwipeRefresh
     private String mType;
     private int mCurrentPage;
     private SimpleRetrofitAPI api;
-    private SimpleRetrofitRecylerAdapter adapter;
+    //    private SimpleRetrofitRecylerAdapter adapter;
     private SwipeToLoadHelper mLoadMoreHelper;
     private RecylerViewAdapterWrapper mAdapterWrapper;
 
@@ -73,19 +74,20 @@ public class SimpleRetrofitActivity extends BaseActivity implements SwipeRefresh
         mType = "Android";
         mCurrentPage = 1;
         initView();
-        adapter = new SimpleRetrofitRecylerAdapter(this, mListData, mType);
-        mRecyclerView.setAdapter(adapter);
+//        adapter = new SimpleRetrofitRecylerAdapter(this, mListData, mType);
+//        mRecyclerView.setAdapter(adapter);
 
 
         //这个部分没改完  不知道什么情况
         mAdapterWrapper = new RecylerViewAdapterWrapper(new SimpleRetrofitRecylerAdapter(this, mListData, "Android"));
         mLoadMoreHelper = new SwipeToLoadHelper(mRecyclerView, mAdapterWrapper);
         mLoadMoreHelper.setLoadMoreListener(this);
+        mRecyclerView.setAdapter(mAdapterWrapper);
 
 
         initNetworkRq();
-        loadData(0, mType, 20, mCurrentPage);
-
+//        loadData(0, mType, 20, mCurrentPage);
+        initLoad();
     }
 
     private void initView() {
@@ -128,11 +130,10 @@ public class SimpleRetrofitActivity extends BaseActivity implements SwipeRefresh
 
 
     /**
-     * 0 : 初始化请求
-     * 1 : refresh请求
-     * 2 : loadMore请求
-     *
      * @param requestDataType 请求类型
+     *                        0 : 初始化请求
+     *                        1 : refresh请求
+     *                        2 : loadMore请求
      * @param mType
      * @param countPerPage
      * @param mCurrentPage
@@ -154,18 +155,20 @@ public class SimpleRetrofitActivity extends BaseActivity implements SwipeRefresh
                             case 0:
                                 mListData.clear();
                                 mListData.addAll(value.getmResults());
-                                adapter.notifyDataSetChanged();
+                                mAdapterWrapper.notifyDataSetChanged();
                                 break;
                             //刷新
                             case 1:
                                 mListData.clear();
                                 mListData.addAll(value.getmResults());
-                                adapter.notifyDataSetChanged();
+                                mAdapterWrapper.notifyDataSetChanged();
+                                refreshComplete();
                                 break;
                             //加载更多
                             case 2:
                                 mListData.addAll(value.getmResults());
-                                adapter.notifyDataSetChanged();
+                                mAdapterWrapper.notifyDataSetChanged();
+                                loadMoreComplete();
                                 break;
 
                         }
@@ -173,7 +176,8 @@ public class SimpleRetrofitActivity extends BaseActivity implements SwipeRefresh
 
                     @Override
                     public void onError(Throwable e) {
-
+                        e.printStackTrace();
+                        initLoadFailed();
                     }
 
                     @Override
@@ -191,6 +195,7 @@ public class SimpleRetrofitActivity extends BaseActivity implements SwipeRefresh
     public void onRefresh() {
         // 刷新时禁用上拉加载更多
         mLoadMoreHelper.setSwipeToLoadEnabled(false);
+        refresh();
     }
 
 
@@ -198,7 +203,51 @@ public class SimpleRetrofitActivity extends BaseActivity implements SwipeRefresh
      * 重写SwipeToLoadHelper中方法（继承接口）
      */
     @Override
-    public void onLoad() {
+    public void onLoadMore() {
+        mSwipeRefreshLayout.setEnabled(false);
+        loadMore();
+    }
 
+    /**
+     * 请求参数：requestDataType
+     * 0：加载
+     * 1：刷新
+     * 2：加载更多
+     */
+    public void initLoad() {
+        mCurrentPage = 1;
+        loadData(0, mType, 20, 1);
+    }
+
+    public void refresh() {
+        mCurrentPage = 1;
+        loadData(1, mType, 20, 1);
+    }
+
+    public void loadMore() {
+        mCurrentPage++;
+        loadData(2, mType, 20, 1);
+    }
+
+    public void refreshComplete() {
+        mSwipeRefreshLayout.setRefreshing(false);
+        // 刷新完成是解禁上拉加载更多
+        mLoadMoreHelper.setSwipeToLoadEnabled(true);
+        mAdapterWrapper.notifyDataSetChanged();
+    }
+
+    /***
+     *  刷新界面显示 并且解禁SwipeRefresh功能
+     */
+    public void loadMoreComplete() {
+        mSwipeRefreshLayout.setEnabled(true);
+        mLoadMoreHelper.setLoadMoreFinish();
+        mAdapterWrapper.notifyDataSetChanged();
+    }
+
+    public void initLoadFailed() {
+        mSwipeRefreshLayout.setVisibility(View.GONE);
+        mProgressBar.setVisibility(View.GONE);
+        mTvLoadFailed.setVisibility(View.VISIBLE);
     }
 }

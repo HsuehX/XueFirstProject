@@ -1,0 +1,1448 @@
+薛雯文：xuewenwen     xueww0803
+xueww    123456
+https://223.255.20.152:8444/svn/SY
+做任务，项目，工程， 反正就是来活之后干活之前 要把工作量分开，分的细致，确保思路清晰
+https://124.204.48.134:8443/svn/pj
+
+http://124.204.48.132:88/zentao/user-login-L3plbnRhby9teS5odG1s.html
+xueww
+posss983
+
+//很好的快捷工具类
+https://github.com/Blankj/AndroidUtilCode/blob/master/utilcode/README-CN.md
+
+
+http://www.wanandroid.com/
+鸿洋大神的网站
+
+
+
+https://github.com/Curzibn/Luban
+ //图片压缩
+
+
+https://github.com/vbartacek/aacdecoder-android
+//解码
+
+https://github.com/lijunhuayc/EasyFileDownloader
+ 一个用于android中的轻量级文件下载器、特别适合应用内升级下载APK
+
+https://github.com/frogermcs/InstaMaterial/tree/master
+//完整程序
+
+
+
+==比较的是内存地址， equal比较的是内容
+
+ setVisibleItems(); 调用 WheelView 组件对象的 setVisibleItems 方法 设置;
+
+
+Json对象中添加的是键值对，JSONArray中添加的是Json对象
+
+BufferedReader 由Reader类扩展而来，提供通用的缓冲方式文本读取，而且提供了很实用的readLine，读取一个文本行，从字符输入流中读取文本，缓冲各个字符，从而提供字符、数组和行的高效读取。
+
+
+application是android程序的入口点  application是用来保存全局变量的
+
+VersionCode：对消费者不可见，仅用于应用市场、程序内部识别版本，判断新旧等用途。
+VersionName：展示给消费者，消费者会通过它认知自己安装的版本
+
+
+GC 字面是说是“垃圾收集”，更精确点就是“内存回收”，GC采用有向图的方式记录和管理堆（heap）中的所有对象来确定哪些对象是\"可达的\"，哪些对象是\"不可达的\".当GC确定一些对象为\"不可达\"时，GC就有责任回收这些内存空间
+
+LocationClientOption百度定位
+
+
+设计模式<框架<架构<平台，从复用角度讲，设计模式是代码级复用、框架是模块级复用、架构是系统级复用、平台是企业应用级复用。
+
+mAdapter.getItem(position);获取listview上item的数据
+ mailNo.get("messageCode")字段名
+
+
+从A activity传到B activity 再从B activity转回 A activity 不用Itent传值，在第一个activity中重写onResume方法，在第二个activity 进行跳转时，将其finish掉
+
+
+一个组件元素能够包含任意多个<meta-data>子元素
+若要讲两个不同的数据库表显示在一个listview中，可以将这两个表合成一个实体类
+
+ StringUtils.isNotBlank()判空（axjx中方法）
+
+listview checkbox 全选问题 在全选的CheckBox的监听事件里面加入遍历，判断数量
+
+EMS中时间方法（取时分秒）
+Date date = null;
+        try {
+            date = DateUtil.stringToDate_3(map.get("upTime".toUpperCase()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        String time = DateUtils.formatDate(date,DateUtils.FORMAT_NO_SECOND_TIME);
+
+
+拨打电话
+String numberRec = mRecPhoneTv.getText() + "";
+                if (!com.bohan.ems.utils.StringUtils.isEmpty(numberRec)) {
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + numberRec.trim()));
+                    startActivity(intent);
+                } else {
+                    showToast("电话号码不能为空！");
+                }
+在AndroidManifest.xml中添加权限<uses-permission android:name="android.permission.CALL_PHONE" />
+
+防止内存过多   可以在activity中重写onDestroy事件，将数据=null，全部清空如：
+ tv_count = null;
+        if(list != null){
+            list.clear();
+            list = null;
+        }
+
+        adapter = null;
+
+        if(lv != null){
+            lv = null;
+        }
+
+
+android studio中对com.baidu.lbsapi.API_KEY的设置是在mdmLibrary中的AndroidManfest中
+
+android studio配置build.gradle文件中的com.android.support包时，所有引入的版本号要一致
+
+
+任何一个UI对象，都肯定是某个Canvas对象的“子级”
+
+
+"PDA_PICKUP".equalsIgnoreCase(root.getChildren().get(i).getName());
+root.getChildren().get(i).getName()一定要放equalsIgnoreCase后面，前面是常量
+所以的equals都这么写
+
+
+调用android自带的方法时 如果只用到了一个 可以用Simple。。。 比如SimpleOnPageChangeListener
+       mPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case 0:
+                        selectedPickUp();
+                        break;
+                    case 1:
+                        selectedDelivery();
+                        break;
+                    default:
+                        break;
+                }
+                currIndex = position;
+            }
+        });
+
+
+/**
+     * 显示提示信息
+     */
+    protected void showToast(String msg) {
+        if (mToast == null) {
+            mToast = Toast.makeText(MainApplication.getInstance(), msg, Toast.LENGTH_SHORT);
+        } else {
+            mToast.setText(msg);
+        }
+        mToast.show();
+    }
+在fragment中定义显示信息
+
+
+
+新一代在控件事件里面的框架是 Butter Knife
+
+/**先查再删**/
+ public void deleteTCustomer() {
+        try {
+            List<TCustomer> tcustomer = mTCustomerDao.queryForAll();
+            mTCustomerDao.delete(tcustomer);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }//删除表中所有信息dao层
+public boolean deleteTCustomer() {
+        TCustomerDao tcustomerDao = new TCustomerDao();
+        tcustomerDao.deleteTCustomer();
+        return false;
+    }//service层
+ mMainService.deleteTCustomer();//activity层
+
+
+dialog.setCancelable(false);
+dialog弹出后会点击屏幕或物理返回键，dialog不消失
+
+dialog.setCanceledOnTouchOutside(false);
+dialog弹出后会点击屏幕，dialog不消失；点击物理返回键dialog消失
+
+
+动态设置控件的长宽setwidth是无效的
+/**
+     * dp转为px
+     * @param context  上下文
+     * @param dipValue dp值
+     * @return
+     */
+    private int dipTopx(Context context, float dipValue)
+    {
+        Resources r = context.getResources();
+        return (int) TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP, dipValue, r.getDisplayMetrics());
+    }
+
+    /**
+     * 动态设置宽
+     * @param width
+     */
+    private void setWidth(int width){
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) mConfirmReceiveTv.getLayoutParams();
+        params.width = dipTopx(DeliveryThirdActivity.this, width);
+        mConfirmReceiveTv.setLayoutParams(params);
+    }
+
+需要如上设置
+
+
+SparseArray稀疏数组，是android内部特有的api
+
+
+java 中的instanceof 运算符是用来在运行时指出对象是否是特定类的一个实例。instanceof通过返回一个布尔值来指出，这个对象是否是这个特定类或者是它的子类的一个实例。
+
+PagerAdapter
+如果需要处理有很多页，并且数据动态性较大、占用内存较多的情况，应该使用FragmentStatePagerAdapter，FragmentPagerAdapter因此适用于那些相对静态的页，数量也比较少的那种
+
+
+安卓系统对于每个应用都有内存使用的限制，机器的内存限制，在/system/build.prop文件中配置的。（如：dalvik.vm.heapsize=128m    dalvik.vm.heapgrowthlimit=64m  ）对于控件不够的情况下 可以设置<android:largeHeap="true"heapgrowthlimit/>
+就是一个普通应用的内存限制，用ActivityManager.getLargeMemoryClass()获得的值就是这个。而heapsize是在manifest中设置了largeHeap=true之后，可以使用最大内存值
+
+
+输入流：
+getInputStream 方法用于返回的一个代表实体内容的输入流对象，其类型为javax.servlet.ServletInputStream。
+getReader方法用于返回的一个代表实体内容的BufferedReader对象，返回的BufferedReader对象将实体内容中的字节数据按照请求消息中指定的字符集编码转换成文本字符串。
+
+
+
+ /**
+     * 屏幕背景控制
+     */
+    public void contrWindow(boolean isDark) {
+        WindowManager.LayoutParams lp = getWindow().getAttributes();
+
+        if (isDark) {
+            lp.alpha = 0.5f;
+            getWindow().setAttributes(lp);
+//            getWindow().setBackgroundDrawableResource(R.color.light_black);
+            /** 窗口背景变暗*/
+            dimBackground(1.0f, 0.5f);
+
+        } else {
+            lp.alpha = 1f;
+            getWindow().setAttributes(lp);
+        }
+
+    }
+
+    private void dimBackground(final float from, final float to) {
+        final Window window = getWindow();
+        ValueAnimator valueAnimator = ValueAnimator.ofFloat(from, to);
+        valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                WindowManager.LayoutParams params = window.getAttributes();
+                params.alpha = (Float) animation.getAnimatedValue();
+                window.setAttributes(params);
+            }
+        });
+
+        valueAnimator.start();
+    }
+
+
+有的时候不需要建个新的类去存键值对，用已经有的类也是可以的
+
+activity之间传list
+ Intent intent = new Intent(FaYunQueryActivity.this, FaYunChaXunResultActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("listData", (Serializable) mDataList);// 列表
+                        bundle.putString("routeNam", mPostRoadTv.getText().toString());// 邮路名称
+                        bundle.putString("postRoad", mWayBillNumberEt.getText().toString());// 路单号码
+                        bundle.putString("truckingNo", mDispatchListEt.getText().toString());//派车单
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+
+
+
+
+resultCode的结果是-1时,为成功,返回值要判断requestCode,要先判断resultCode是否成功,如果成功的话  继续判断requestCode的值
+
+
+
+使用测试demo模式的话 测试数据的代码就可以直接上传到服务器    这样之后如果再有类似相同的情况需要数据测试的话 就不用再写假数据了
+
+ if(MainApplication.getInstance().testUIFlowFlag){
+ //           ArrayList<BeanRespQueryCachMail.CashMailList> list = new ArrayList<>();
+            for(int i=0;i<10;i++){
+//                BeanRespQueryCachMail.CashMailList data = new BeanRespQueryCachMail.CashMailList();
+ //               data = (BeanRespQueryCachMail.CashMailList) ReflictUtils.setObjValueIdx(data,i);
+                list.add(data);
+            }
+            callback.returnResult(true,list);
+           return;
+        }
+
+这么写对假数据非常实用 且快
+
+
+
+
+
+对于基础数据下载这方面做假数据的时候，可以用异步来加快一些速度，将报文中的数据添加到程序中，用实体类或者json去解析获取
+if(MainApplication.getInstance().testUIFlowFlag){
+            new AsyncTask<Void, Void, BeanRespNonDelivery>(){
+
+                @Override
+                protected BeanRespNonDelivery doInBackground(Void... voids) {
+                    return BaseDataAnalogData.getNonDelivery();
+                }
+
+                @Override
+                protected void onPostExecute(BeanRespNonDelivery beanRespNonDelivery) {
+                    super.onPostExecute(beanRespNonDelivery);
+                    cb.returnResult(true, beanRespNonDelivery, null);
+                }
+            }.execute();
+            return;
+        }
+
+存贮是这么存的
+/**
+ * 基础数据下载-假数据
+ */
+public class BaseDataAnalogData {
+    public static BeanRespGetAllInfoName getBaseData(){
+           StringBuffer result = new StringBuffer("{"isTDivision":"1","tProducts":[{"id":163,"codFlag":"","receiptFlag":"","contentsName":"","weightUpperBound":""},");//字段
+           result.append("{"id":162,"codFlag":"9","receiptFlag":"[{\"propertyName\":\"基本\",\"propertyCode\":\"1\"},{\"propertyName\":\"回执\",\"propertyCode\":\"2\"},{{"id":162,"codFlag":"9","receiptFlag":"[{\"propertyName\":\"基本\",\"propertyCode\":\"1\"},{\"propertyName\":\"回执\",\"propertyCode\":\"2\"},{\"propertyName\":\"短信\",\"propertyCode\":\"3\"}]",");//数据
+
+              return JsonUtils.toClass(result.toString(), BeanRespGetAllInfoName.class);
+    }
+
+StringBuffer中的报文会有很多很多很多用append来回加吧
+
+
+报文在log中看查看  有些程序没有将报文显示在logcat，而是单独建立了一个文件夹去保存有报文的log
+
+
+
+objects[2].toString()  相对于cb.returnResult(true, data, "0",""); [true后面是第一个值，true不看作是第一个值]
+显示的就是“”中的内容   就是显示第三个内容，如果returnResult(true, data, "0");只含有两个的话，那么objects[2].toString() 就会崩溃，提示数组下标越界。
+
+
+sdk 23以上不再支持org.apache.http
+23以上的sdk，则在build.gradle中,(在buildToolsVersion下边，defaultConfig上边)添加： useLibrary 'org.apache.http.legacy'
+
+
+edittext强制选中   mWidthEt.setSelectAllOnFocus(true);
+
+
+
+json解析的时候 如果
+{"resCode":"B00010","msg":"查询成功","obj":"{
+        \"mailList\": [
+
+        ],
+        \"isVirtual\": \"0\"
+    }"}
+即第一个大括号之后还有"{}"这种写法，那么这里面的内容就是字符串，里面的印好前要加斜杠，\"
+
+
+如果json返回的是一个集合，就是[{}]的话 要把集合内的字符串加个斜杠（在java文件中要加三个）
+{"resCode":"B00010","msg":"成功","obj":"[
+        {
+            \"waybillNo\": \"1017991808627\",
+            \"weight\": 2000.0,
+            \"baseProductName\": \"标快文件\",
+            \"destinationOrgName\": \"巢湖\"
+        }
+    ]"}
+
+
+
+android把手机号的中间4位用*显示（其实就是字符串选定第四个位置到第八个位置之间的4个数字，替换成*）
+
+ String telNum = task.getSenderMobile();
+    if(!StringUtil.isEmpty(task.getSenderMobile()) && telNum.length() == 11){
+        telNum = telNum.substring(0,3) + "****" + telNum.substring(8);
+    }
+
+
+
+
+BeanRespQueryCachMail.CashMailList data = new BeanRespQueryCachMail.CashMailList();
+data = (BeanRespQueryCachMail.CashMailList) ReflictUtils.setObjValueIdx(data,i);
+String json = "";
+json = JsonUtils.toJson(data);
+Log.e(TAG, json);
+这样可以将自己做的假数据转换成json串
+
+
+
+
+ <activity
+    android:name=".business.searchproduct.activity.SearchProductActivity"
+    android:icon="@drawable/icon"
+    android:windowSoftInputMode="adjustResize|stateVisible" />
+
+ android:windowSoftInputMode="adjustResize|stateVisible" listview（和其他的布局文件）随着软件盘的弹出而上移
+
+
+
+  et.setText(s.toString().toUpperCase());//小写转大写
+
+
+
+输入计数格式，零开头的去掉零，点开头的前面加一位0
+   @OnTextChanged(value = R.id.edit_pickupdomestic_weight, callback = OnTextChanged.Callback.AFTER_TEXT_CHANGED)
+    public void afterWeightTextChanged(Editable editable) {
+        if (!TextUtils.isEmpty(editable.toString())) {
+            if (".".equals(editable.toString())) {// 已.开头
+                mWeightET.setText("0.");
+                mWeightET.setSelection(mWeightET.getText().length());
+            } else if (editable.length() > 1
+                    && "0".equals(editable.toString().substring(0, 1))
+                    && !"0.".equals(editable.toString().substring(0, 2))) {// 已0开头,不以0.开头
+                mWeightET.setText(editable.toString().substring(1));
+                mWeightET.setSelection(mWeightET.getText().length());
+            }
+        }
+    }
+
+
+
+
+ /**
+ * edittext获取焦点，弹出软键盘
+ */
+InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+
+/**这么写在oncreate里面调用也是可以的**/
+ private void hideInputMethod(){
+    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+    if(mLengthEt != null && imm != null){
+        imm.hideSoftInputFromWindow(mLengthEt.getWindowToken(),0);
+    }
+}
+
+
+
+
+HTML5与android的交互
+android studio是不能写HTML的   在android的APP中只建立了一个MainActivity，在MainActivity的布局中，重点是一个webview，在MainActivity中设置webview的各种监听
+在android中建立一个可以调用js的文件，android使用webview引入html后，显示html的界面，当需要对android系统继续操作时，html调用js（html.js的方法名，html中可以编写JS，），通过js传给android，android接收到传过来的东西后，发送个指令（广播之类的）去调用android系统中的功能，然后调用js中的方法，让js把结果返回给html。
+android创建的可以调用js 的java文件是与html中js互调的
+
+
+使用谷歌浏览器的开发者模式，可以将视图调整成手机的样式，进行适配
+
+
+
+android程序 有些功能处理时间过长，会造成系统崩溃，处理的办法就是加一个异步处理。
+
+
+
+android在对图片进行处理的时候，会进行三级缓存  内存，sd卡（要指定路径），网络；先在内存里找，没有的话去sd上的路径里面找，sd卡没有就去网络上下载
+
+
+
+对接口的话要在火狐上进行，在工具里下载一个poster，
+弹出的对话框中，content type中写application/json，在content options中写json串
+
+
+
+
+
+当android studio的程序加载的包过多时，要在app.build里面加上compile 'com.android.support:multidex:1.0.1'（接近于无穷大）
+dependencies {
+   各种包
+    compile 'com.android.support:multidex:1.0.1'
+}
+
+
+程序里面有application的话，在application里面重写attachBaseContext方法，加上 MultiDex.install(this);
+@Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
+    }
+
+
+复制到系统的剪切板
+ public void onClickCopy(View v) {
+        // 从API11开始android推荐使用android.content.ClipboardManager
+        // 为了兼容低版本我们这里使用旧版的android.text.ClipboardManager，虽然提示deprecated，但不影响使用。
+        ClipboardManager cm = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        // 将文本内容放到系统剪贴板里。
+        cm.setText(mMessageTv.getText());
+        Toast.makeText(this, "复制成功，可以发给朋友们了。", Toast.LENGTH_LONG).show();
+ }
+
+
+对字符串的截取，包含
+String endTime = log.getDescription();
+if (endTime.contains("至")) {//判断字段内是否包含“至”
+    String[] array = endTime.split("至");//如果是，则把其以“至”为分界点 ，分隔开
+    endTime = array[1];//取第二个字符串
+}
+MinPointEntity endEntity = new MinPointEntity(endTime);
+
+
+
+
+判断控件背景颜色
+Drawable background = mTodayRl.getBackground();
+ColorDrawable colorDrawable = (ColorDrawable) background;
+int colorToday = colorDrawable.getColor();
+
+
+获取控件文本颜色做判断
+//获取当前文本颜色
+int curTextColor = mTvTest.getCurrentTextColor();
+//把文本解析成16进制的颜色
+String x16Color = Integer.toHexString(curTextColor);
+
+if (x16Color.equals("ff000000")) {
+    Toast.makeText(TestActivity.this, "true", Toast.LENGTH_LONG).show();
+} else {
+    Toast.makeText(TestActivity.this, "false", Toast.LENGTH_LONG).show();
+}
+
+
+android:includeFontPadding
+对字体边距进行设置说
+
+
+
+
+android:screenOrientation="landscape"
+在AndroidManifest.xml中设置，使activity为横屏
+ <activity android:name=".MainActivity"
+           android:screenOrientation="landscape">
+    <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
+
+        <category android:name="android.intent.category.LAUNCHER"/>
+    </intent-filter>
+</activity>
+
+
+如果是在 onResume()设置的话，
+@Override
+    protected void onResume() {
+        /**
+         * 设置为横屏
+         */
+        if (getRequestedOrientation() != ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
+        super.onResume();
+    }
+则是加载了两边activity，第一遍走oncreate，第二遍走onresume，再进入oncreate
+不采取
+
+
+
+代码设置居中
+//此处相当于布局文件中的Android：gravity属性
+button.setGravity(Gravity.CENTER);
+
+
+异步加载是与主线程同时进行，要加载后再做处理的功能要在onPostExecute方法完成之后写
+
+延时
+Handler handler = new Handler();
+handler.postDelayed(new Runnable() {
+    @Override
+    public void run() {
+        initData();//3秒之后要执行的方法
+    }
+}, 3000);//3秒后执行Runnable中的run方法
+
+
+自动算时间
+Calendar cal = Calendar.getInstance();
+cal.add(Calendar.DATE, -1);//当天日期的前一天
+Date time = cal.getTime();
+SimpleDateFormat simpleDateFormatCommon = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+day = simpleDateFormatCommon.format(time).substring(8, 10);//取到“日”
+
+
+Date as = new Date(new Date().getTime() - 24 * 60 * 60 * 1000);
+SimpleDateFormat matter1 = new SimpleDateFormat("yyyy-MM-dd");
+String time = matter1.format(as);
+System.out.println(time);
+
+
+
+
+传对象 在要类里面加入Serializable
+//发送端
+Bundle bundleParticular = new Bundle();
+bundleParticular.putSerializable(ParticularsActivity.PARTICULARSEVELOG, mShowList.get(position));//传对象
+bundleParticular.putString(ParticularsActivity.PARTICULARSTITLE, title);//
+Intent intentParticular = new Intent(DataActivity.this, ParticularsActivity.class);/传字符串
+intentParticular.putExtras(bundleParticular);
+startActivity(intentParticular);
+
+//接收端
+title = getIntent().getStringExtra(ParticularsActivity.PARTICULARSTITLE);//接字符串
+mTitleTv.setText(title);
+EventLog log = (EventLog) getIntent().getSerializableExtra(ParticularsActivity.PARTICULARSEVELOG);//接对象
+mTitleTv.setText(log.getEventType());
+mContentTv.setText(log.getEventContent() == null ? "未知内容" : log.getEventContent());
+
+
+
+
+在OnItemClickListener中，可以设置成mAdapter.get(position)
+
+
+ mData=plist;相对于下面的写法，所占空间更小
+this.mData.clear();
+this.mData.addAll(plist);
+
+
+try{}catch（）{}里面可以写很多东西
+可以把很多try，catch合并成一个的，不用都分开写
+要学会整理思路
+
+
+
+延时两秒执行的操作（mPgBarIv为控件）
+  mPgBarIv.postDelayed(new Runnable() {
+    @Override
+    public void run() {
+        animationDrawable.start();
+    }
+}, 100);
+
+
+//动态设置listview长度
+public void setListViewHeightBasedOnChildren(ListView listView) {
+
+        ListAdapter listAdapter = listView.getAdapter();
+
+        if (listAdapter == null) {
+            return;
+        }
+
+        int totalHeight = 0;//总高
+
+        for (int i = 0; i < listAdapter.getCount(); i++) {
+            View listItem = listAdapter.getView(i, null, listView);
+            listItem.measure(0, 0);//尺寸，宽高
+            totalHeight += listItem.getMeasuredHeight();//总的实际高度
+        }
+
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));//listview的总长度是item之间的距离加上所有item的长度
+        listView.setLayoutParams(params);
+    }
+
+
+
+一般请求服务器都是一部处理，所以如果是要在请求之后做的事情，要在网络请求后面写，不然就是同步了  会崩溃
+
+
+	https://223.255.20.152:8443/svn/SY/02-项目类/01-业务项目/20161128-滴达滴/code/app/EnjoySalePar
+
+
+    https://223.255.20.152:8443/svn/SY/02-项目类/01-业务项目/20161128-滴达滴/code/app/EnjoySalePar
+
+
+    https://223.255.20.152:8443/svn/SY/02-项目类/01-业务项目/20171208-MDM保镖/code
+
+
+    https://192.168.7.28:8443/svn/AXURE团队/新一代外场安卓版
+
+    https://124.204.48.134:8443/svn/pj/新一代终端应用Android版/working/源码/EmsApp
+
+    https://124.204.48.134:8443/svn/pj/新一代终端应用Android版/working
+
+
+String[] delivery = s.split(",");
+for (int i = 0; i < delivery.length; i++) {
+    if("0".equals(delivery[i])){
+        deliveryText = "自提";
+    } else if("1".equals(delivery[i])){
+        deliveryText += "  送货上门";
+    }
+}
+
+
+//时间范围
+Calendar cal = Calendar.getInstance();// 当前日期
+int hour = cal.get(Calendar.HOUR_OF_DAY);// 获取小时
+int minute = cal.get(Calendar.MINUTE);// 获取分钟
+int minuteOfDay = hour * 60 + minute;// 从0:00分开是到目前为止的分钟数
+final int start = 0* 60 + 20;// 起始时间 00:20的分钟数
+final int end = 8 * 60;// 结束时间 8:00的分钟数
+if (minuteOfDay >= start && minuteOfDay <= end) {
+System.out.println("在外围内");
+} else {
+System.out.println("在外围外");
+}
+
+
+
+java.sql.SQLException: Getting a writable database from helper DatabaseHelper@786d703 failed
+这个是   数据库没有读写权限，数据库不存在  应该是数据库没有创建成功
+
+
+
+double型比较大小
+public class DoubleDemo {
+   public static void main(String[] args) {
+     // compares two Double objects numerically
+     Double obj1 = new Double("8.5");
+     Double obj2 = new Double("11.50");
+     int retval =  obj1.compareTo(obj2);
+     if(retval > 0) {
+        System.out.println("obj1 is greater than obj2");
+     }
+     else if(retval < 0) {
+        System.out.println("obj1 is less than obj2");
+     }
+     else {
+        System.out.println("obj1 is equal to obj2");
+     }
+   }
+}
+
+
+//取两位小数
+float sumPrice = (double) (Math.round(sum * 100)) / 100; //总钱数
+float fullFreightReduction = float (Math.round((countSendPrice - sumPrice) * 100)) / 100; //总钱数
+
+
+java.text.DecimalFormat df = new java.text.DecimalFormat("0.00");//取两位小数
+Double fullFreightPrice = countSendPrice;//满减运费
+double sum = 0;//购物车内商品总价
+for (int i = 0; i < mShoppingCarList.size(); i++) {
+     sum += Double.parseDouble(mShoppingCarList.get(i).getGoodsPrice()) * Integer.parseInt(mShoppingCarList.get(i).getGoodsCount());
+}
+Double sumPrice = sum;//总金额
+Double fullFreightReduction = fullFreightPrice - sumPrice; //购买东西的总价是否大于满减的额度
+mShoppingCarMoneyTv.setText("￥" + df.format(sumPrice));
+if (fullFreightReduction > 0) {
+    mShoppingCarTtoasTv.setText("还差" + df.format(fullFreightReduction) + "免运费");
+} else {
+       mShoppingCarTtoasTv.setText("已免配送费");
+}
+
+
+如果所在的地方不是公司纯内网的环境，那么不用配置下面这句话。
+Host name：mirrors.neusoft.edu.cn（东软的镜像地址）
+
+
+
+    /**
+     * 需要重新加载页面时用
+     */
+    @Override
+    public void onResume() {
+        super.onResume();
+        init();
+    }
+
+
+创建application，在oncreate()中写的方法想要实现（实例化）的话，必须在AndroidManifest中的<application/>添加name属性：
+<application
+
+        android:name=".App"
+
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+</application>
+
+这个是与application中的oncreate()相对应的。
+
+
+程序用的lib包中引用的包必须和app.build.gradle中引用的内部包数量和名称相同
+compile 'com.alibaba:fastjson:1.1.62.android'————————是从网络上直接引用
+compile files('libs/gson-1.6.jar')————————是从本地引用（）中的为相对路径
+
+
+
+
+
+按返回键回到上一界面时，可以这么写，使上一界面的值为空（重置）
+Intent intent = new Intent();
+intent.setClass(FengDaiActivity.this, ZongBaoFengFaFragment.class);
+setResult(1, intent);
+
+
+
+
+mUsernameEt.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);//输入法默认为英文，但可以输入其他字符
+mUsernameEt.setRawInputType(Configuration.KEYBOARD_QWERTY);//输入法默认为数字，但没有其他限制，什么类型都可输入
+
+
+
+//动态权限获取
+Manifest.permission.SYSTEM_ALERT_WINDOW;//警报权限
+Manifest.permission.WRITE_SETTINGS;//写的权限
+这两个权限，除非获取到设备的签名，否则无路如何都是获取不到这两个权限的
+
+
+
+使用ormlite的方式创建数据库，如果字段（列）中含有的类型为集合，那么要在实体类中写成ArrayList<>的类型
+并且在注解中添加dataType = DataType.SERIALIZABLE然后在后面写列别名等属性
+
+
+
+//item传值、跳页
+ mDataLv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Bundle bundleParticular = new Bundle();
+                bundleParticular.putSerializable(ParticularsActivity.PARTICULARSEVELOG, (Serializable) mAdapter.getItem(position));
+                bundleParticular.putString(ParticularsActivity.PARTICULARSTITLE, title);
+                Intent intentParticular = new Intent(DataActivity.this, ParticularsActivity.class);
+                intentParticular.putExtras(bundleParticular);
+                startActivity(intentParticular);
+            }
+        });
+
+
+ /* 时间
+     *这个好像是不对的
+     * @param inVal
+     * @return
+     */
+    private long fromDateStringToLong(String inVal) { // 此方法计算时间毫秒
+        Date date = null; // 定义时间类型
+        SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        try {
+            date = inputFormat.parse(inVal); // 将字符型转换成日期型
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return date.getTime(); // 返回毫秒数
+    }
+
+    private int time(String startTime, String endTime) {
+        long startT = fromDateStringToLong(startTime); // 定义测试时间1
+        long endT = fromDateStringToLong(endTime); // 定义测试时间2
+        long ss = (endT - startT) / 1000; // 共计秒数
+        int MM = (int) ss / 60; // 共计分钟数
+        int hh = (int) ss / 3600; // 共计小时数
+        int dd = (int) hh / 24; // 共计天数
+        System.out.println("共" + dd + "天,时间是：" + hh + " 小时 " + MM + " 分钟"
+                + ss + " 秒 共计：" + ss * 1000 + " 毫秒");
+        return MM;
+    }
+
+
+    /**
+     * 时间 计算
+     *这个好像是对的
+     * @return
+     */
+    private static long getTimeMillis(String strTime) {
+        long returnMillis = 0;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        Date d = null;
+        try {
+            d = sdf.parse(strTime);
+            returnMillis = d.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return returnMillis;
+    }
+
+
+    public static String getTimeDifference(String startTime, String endTime) {
+        //传入字串类型 2016/06/28 08:30
+        long longStart = getTimeMillis(startTime); //获取开始时间毫秒数
+        long longEnd = getTimeMillis(endTime);  //获取结束时间毫秒数
+        long longExpend = longEnd - longStart;  //获取时间差
+
+        long longHours = longExpend / (60 * 60 * 1000); //根据时间差来计算小时数
+        long longMinutes = (longExpend - longHours * (60 * 60 * 1000)) / (60 * 1000);   //根据时间差来计算分钟数
+
+//        return longHours + ":" + longMinutes;
+        return longMinutes + "";
+    }
+
+
+在Activity中定义了很多生命周期的不同状态要调用的方法，这些方法都是空实现，系统框架要调用，用户也要调用来实现。
+        　　　　实例(对于Android界面上Button点击事件监听的模拟):
+    a．定义接口
+    public interface OnClickListener {
+　　　　public void OnClick(Button b);
+　　　}　
+	b. 定义Button
+　　　　　public class Button {
+　　　　　　OnClickListener listener;
+　　　　　　public void click() {
+　　　　　　　　listener.OnClick(this);
+　　　　　　}
+　　　　　　public void setOnClickListener(OnClickListener listener) {
+　　　　　　　　this.listener = listener;
+　　　　　　}
+　　　　　}
+　　　　c． 将接口对象OnClickListener 赋给 Button的接口成员
+　　　　public class Activity {
+　　　　　　public Activity() {
+　　　　　　}
+　　　　　　public static void main(String[] args) {
+　　　　　　　　Button button = new Button();
+　　　　　　　　button.setOnClickListener(new OnClickListener(){
+　　　　　　　　　　@Override
+　　　　　　　　　　public void OnClick(Button b) {
+　　　　　　　　　　　　System.out.println("clicked");
+　　　　　　　　　　}
+　　　　　　　　});
+　　　　　　　　button.click(); //user click,System call button.click();
+　　　　　　}
+　　　　}
+
+mDao.queryBuilder().orderBy("id", false).query(); //参数false表示降序，true表示升序。
+
+
+含or链接多条件的查询
+ /**
+     * 重新查询机柜
+     */
+    public List<DeviceDto> querySelectCabinet(String taskId, String taskRfId) {
+        List<DeviceDto> list = null;
+        try {
+            QueryBuilder<DeviceDto, String> builder = mDeviceDto.queryBuilder();
+            Where<DeviceDto, String> where = builder.where();
+            where.or(where.eq(DbConst.DeviceTable.COLUMN_OPRSTATUS, "1"),
+                      where.eq(DbConst.DeviceTable.COLUMN_OPRSTATUS, "2"))
+            .and().eq(DbConst.DeviceTable.COLUMN_TASKID, taskId)
+            .and().eq(DbConst.DeviceTable.COLUMN_TASKRFID, taskRfId);
+            builder.orderBy(DbConst.DeviceTable.COLUMN_ID, false);
+            list = mDeviceDto.query(builder.prepare());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+/**
+     * or语句
+     */
+    public List<RfInfoPointsBeanDto> selectFinishStatusList(int databean_id) {
+        List<RfInfoPointsBeanDto> list = null;
+        try {
+            QueryBuilder<RfInfoPointsBeanDto, Integer> builder = mRfInfoPointsBeanDto.queryBuilder();
+            Where<RfInfoPointsBeanDto, Integer> where = builder.where();
+            where.or(where.isNull(DbConst.RfInfoPointsBean.COLUMN_STATUS),//字段内容为null
+                     where.ne(DbConst.RfInfoPointsBean.COLUMN_STATUS, "1"),
+                     where.ne(DbConst.RfInfoPointsBean.COLUMN_STATUS,"22"),
+                     where.ne(DbConst.RfInfoPointsBean.COLUMN_STATUS,""),//字段内容为""
+                     where.isNotNull(DbConst.RfInfoPointsBean.COLUMN_STATUS))
+                .and().eq(DbConst.RfInfoPointsBean.COLUMN_DATABEANID, databean_id)
+                .and().eq(DbConst.RfInfoPointsBean.COLUMN_USERCODE, App.getInstance().getUserCode());
+            builder.orderBy(DbConst.RfInfoPointsBean.COLUMN_LOCALALARMLEVEL, false);
+            list = mRfInfoPointsBeanDto.query(builder.prepare());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+//or查询  or与and连用
+ public List<TaskDataBeanDto> queryTaskList(String dfGroupCode) {
+        List<TaskDataBeanDto> list = null;
+        try {
+            QueryBuilder<TaskDataBeanDto, Long> builder = mTaskDto.queryBuilder();
+            Where<TaskDataBeanDto, Long> where = builder.where();
+            where.or(where.eq(DbConst.TaskDataBean.COLUMN_TASKSTATUS, "A"),
+                    where.eq(DbConst.TaskDataBean.COLUMN_TASKSTATUS, "B"),
+                    where.eq(DbConst.TaskDataBean.COLUMN_TASKSTATUS, "C"),
+                    where.eq(DbConst.TaskDataBean.COLUMN_TASKSTATUS, "D"),
+                    where.eq(DbConst.TaskDataBean.COLUMN_TASKSTATUS, "E"),
+                    where.eq(DbConst.TaskDataBean.COLUMN_TASKSTATUS, "F"))
+                    .and().eq(DbConst.TaskDataBean.COLUMN_DFGROUPCODE, dfGroupCode);
+            list = mTaskDto.query(builder.prepare());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+
+
+    /**
+     * 多条并列语句  如：(A=1 or B=1) and C = 3 and (D=4 or E=5)
+     */
+    public List<TaskDataBeanDto> queryTaskList(String dfGroupCode) {
+        List<TaskDataBeanDto> list = null;
+        try {
+            QueryBuilder<TaskDataBeanDto, Long> builder = mTaskDto.queryBuilder();
+            Where<TaskDataBeanDto, Long> where = builder.where();
+            Where<TaskDataBeanDto, Long> whereTime = where.or(where.like(DbConst.TaskDataBean.COLUMN_TASKCANSTARTTIME, DateUtils.getToday10() + "%"),
+                    where.like(DbConst.TaskDataBean.COLUMN_TASKCANSTARTTIME, DateUtils.getToday10() + "%"));
+            Where<TaskDataBeanDto, Long> whereStatus = where.or(where.eq(DbConst.TaskDataBean.COLUMN_TASKSTATUS, "A"),
+                    where.eq(DbConst.TaskDataBean.COLUMN_TASKSTATUS, "B"),
+                    where.eq(DbConst.TaskDataBean.COLUMN_TASKSTATUS, "C"),
+                    where.eq(DbConst.TaskDataBean.COLUMN_TASKSTATUS, "D"),
+                    where.eq(DbConst.TaskDataBean.COLUMN_TASKSTATUS, "E"),
+                    where.eq(DbConst.TaskDataBean.COLUMN_TASKSTATUS, "F"));
+            Where<TaskDataBeanDto, Long> whereGroupCode = where.eq(DbConst.TaskDataBean.COLUMN_DFGROUPCODE, dfGroupCode);
+            where.and(whereTime, whereStatus, whereGroupCode);
+
+
+            list = mTaskDto.query(builder.prepare());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+
+//map型获取值
+ for (Map<String, Object> m : datas) {
+            for (String k : m.keySet()) {
+                Log.e("~~~~~~", "~~~~~~" + m.get(k));
+            }
+        }
+
+如果跳转崩溃，添加intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); 这句话
+Intent intent = new Intent(AppContext.getInstance(), DeliveryNoTdActivity.class);
+intent.putExtra(ConstantCode.KEY_ORDER_NUMBER, deliveryDtos.get(position).getMailcode());
+intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+AppContext.getInstance().startActivity(intent);
+这里不是在activity中跳转的，所以在application中写了一个调用context的方法getInstance()
+
+
+单选框点击选择事件
+ private OnCheckedChangeListener listen = new OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(RadioGroup group, int checkedId) {
+            int id = group.getCheckedRadioButtonId();
+            switch (group.getCheckedRadioButtonId()) {
+                case R.id.girl_id:
+                    textView.setText("我选择的是:" + radioButton_girl.getText());
+                    break;
+                case R.id.boy_id:
+                    textView.setText("我选择的是:" + radioButton_boy.getText());
+                    break;
+                default:
+                    textView.setText("我选择的是:新增");
+                    break;
+            }
+        }
+    };
+
+//替换
+String urmpKpiType = list.get(i).getUrmpKpiType();
+urmpKpiType = urmpKpiType.replace("[", "");
+urmpKpiType = urmpKpiType.replace("]", "");//将接口返回的[]去掉
+
+
+/**
+ * listview禁止滑动
+*/
+@OnTouch(R.id.show_attribute_lv)
+    public boolean prohibitionSliding(View view, MotionEvent event) {
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_MOVE:
+                return true;
+            default:
+                break;
+        }
+        return true;
+    }
+
+listview与ScrollView滑动冲突 解决一
+/**
+     * 根据item数量计算listview高度
+     * @param mShowAttributeLv
+     */
+    private void maxListViewHeight(ListView mShowAttributeLv) {
+        //setAdapter是将数据设置进listview中，你们这里的getAapter就是获取listview的数据
+        //有多少个数据，就有多少个item，listview就有多长
+        ListAdapter listAdapter = mShowAttributeLv.getAdapter();
+        int totalHeight = 0;
+        if (listAdapter == null) {//如果listview里面没有东西，就return掉
+            return;
+        }
+        //如果有，就计算总高度
+        for (int i = 0; i < listAdapter.getCount(); i++) {
+            //这里和adapter里面的写法就差不多了
+            View item = listAdapter.getView(i, null, mShowAttributeLv);
+            /**
+             里面传递的参数0，符合着 MeasureSpec 规范，
+             将0解包后，所对应的 SpecMode = 0，SpecSize = 0.
+             SpecMode 0 对应的模式为 UNSPECIFIED.
+             UNSPECIFIED的官方解释：
+             The parent has not imposed any constraint on the child. It can be whatever size it wants.
+             父容器不会对子元素加以任何约束，子元素可以是任何大小。
+             */
+            item.measure(0, 0);
+            totalHeight += item.getMeasuredHeight();//使每一个item的高度相加
+        }
+        ViewGroup.LayoutParams params = mShowAttributeLv.getLayoutParams();
+        // listView.getDividerHeight()获取子项间分隔符的高度, params.height设置ListView完全显示需要的高度
+        params.height = totalHeight + (mShowAttributeLv.getDividerHeight() * (listAdapter.getCount() - 1));
+        mShowAttributeLv.setLayoutParams(params);
+    }
+
+
+
+getChildCount()、getChildAt()
+/**
+     * 显示
+     * 机柜属性进行存储 用getTag()作为标识，判断具体是哪个个控件，获取值，或者录入值  其实这里的getTag()只是用作标识区分，case几都是一样的
+     */
+    private boolean checkAndSaveAttr() {
+        for (int i = 0; i < rootLayout.getChildCount(); i++) {
+            int type = Integer.parseInt(rootLayout.getChildAt(i).getTag().toString());
+            switch (type) {
+                case 1:
+                    String key1 = ((EditcustomView) rootLayout.getChildAt(i)).getLabelName();
+                    String text1 = ((EditcustomView) rootLayout.getChildAt(i)).getEditText();
+                    String code1 = ((EditcustomView) rootLayout.getChildAt(i)).getCode();
+                    if (!TextUtils.isEmpty(text1)) {
+                        mService.setAttribute(ciPointsBeanDto.getId(), Long.valueOf(code1), null, text1);
+                    } else {
+                        showToast("请将信息填写完整！");
+                        return false;
+                    }
+                    break;
+                case 2:
+                    String key2 = ((YesOrNoRadioView) rootLayout.getChildAt(i)).getLabelName();
+                    String value2 = ((YesOrNoRadioView) rootLayout.getChildAt(i)).getSelectText();
+                    String text2 = ((YesOrNoRadioView) rootLayout.getChildAt(i)).getShowText();
+                    String code2 = ((YesOrNoRadioView) rootLayout.getChildAt(i)).getCode();
+                    mService.setAttribute(ciPointsBeanDto.getId(), Long.valueOf(code2), value2, text2);
+                    break;
+                case 3:
+                    String key3 = ((ThreeRadioView) rootLayout.getChildAt(i)).getLabelName();
+                    String value3 = ((ThreeRadioView) rootLayout.getChildAt(i)).getSelectText();
+                    String text3 = ((ThreeRadioView) rootLayout.getChildAt(i)).getShowText();
+                    String code3 = ((ThreeRadioView) rootLayout.getChildAt(i)).getCode();
+                    mService.setAttribute(ciPointsBeanDto.getId(), Long.valueOf(code3), value3, text3);
+                    break;
+                default:
+                    break;
+            }
+        }
+        return true;
+    }
+
+
+
+Stack<View> mStack;  栈
+
+
+//获取本地时间，转换成string
+SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+Date curDate = new Date(System.currentTimeMillis());
+String time = formatter.format(curDate);
+
+
+
+//虚线可以这么写
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="line">
+    <stroke
+        android:width="1dp"
+        android:color="#d3d3d3"
+        android:dashGap="5dp"
+        android:dashWidth="1dp" />
+    <size android:height="1dp" />
+</shape>
+
+
+ /**
+     * 接口问题
+     */
+ @GET("http://xj.com/api/login/mobile/{username}")
+ Observable<BeanResLogin> login(@Path("username") String userName, @Query("userPassword") String encryptPwd);
+@Path里面是路径，@Query里面是参数
+对应的postman的正常写法就是：http://xj.com/api/login/mobile/ceshi1?userPassword=9FB0C51882A191F61B7D66F9A000ACB9
+（userPassword后面的那一段是加密的密码）
+
+
+//关于记住密码 ，在本地存储
+//假数据  如果账号是123且密码是123就认为登陆成功
+            if (account.equals("123") && password.equals("123")) {
+                //如果选择了记住密码，将账号密码存在本地文件中
+                if (mRememberPasswordCb.isChecked()) {
+                    editor.putBoolean("remember_password", true);
+                    editor.putString("account", account);
+                    editor.putString("password", password);
+                } else {
+                    editor.clear();//清楚本地存储的账号密码
+                }
+                editor.apply();//修改本地记录情况，没有返回值，还有个editor.commit();有返回值，Boolean型
+                Bundle bundleParticular = new Bundle();
+                bundleParticular.putString(RoutingTaskActivity.USERCODE, account);
+                Intent intent = new Intent(LoginActivity.this, RoutingTaskActivity.class);
+                intent.putExtras(bundleParticular);
+//                startActivity(intent);
+//                finish();
+            } else {
+                mShowErrorTv.setText("登录失败，用户名密码错误");
+                editor.clear();
+                mPasswordEt.setText("");
+            }
+
+异步不能写在循环中，否则会造成Android任务过多导致崩溃
+
+
+从百度上面弄到的图片不是图片的url，要点击进去查看里面的src路径，才是图片的地址
+
+
+在APP里创建 数据库 使用
+ Dao<TaskDataBeanDto, Long> dao = mDatabaseHelper.getTaskBeanDataDto();
+ dao.queryForId(new Long(0)); // ORM数据库是首次查询时创建
+这种形式的话，在权限中需要添加位置权限
+之前的权限获取是这样的
+权限是成对的
+
+
+PermissionUtils是一个通用的工具类，添加权限都是在AndroidManifest中添加的，PermissionUtils不用动
+
+（这里的PermissionUtils也是改过的）
+  Dao<TaskDataBeanDto, Long> dao = mDatabaseHelper.getTaskBeanDataDto();
+  dao.queryForId(new Long(0)); // ORM数据库是首次查询时创建
+
+应该放在activity创建，原来是在application里面的oncreate方法中使用的，但是，权限的获取是在启动页activity中，所有是在获取权限之前就创建了
+现在改在在activity中调用，就是在获取权限之后调用
+
+
+验证手机类型（以新一代为例）   Build.MODEL获取的是手机里面的产品信息
+ if(!Build.MODEL.contains("Neolix")){
+            AlertDialog.Builder builder  =new AlertDialog.Builder(this);
+            builder.setTitle("非法设备");
+            builder.setMessage("当前设备是非法设备，请使用博韩设备");
+            builder.setCancelable(false);
+            builder.setPositiveButton("退出", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    finish();
+                }
+            });
+            builder.create().show();
+        }
+
+
+事务会起到加速的作用
+保证数据的同步性
+如果出了异常，就不提交数据 一旦有错就会回滚，回到原始的状态
+
+orm lite关于小于比较的写法 lt()
+ /**
+     * 如果任务状态是A或B或C，且失败的时间（字段名）小于当前时间啊，则把状态置为F
+     */
+ String current=DateUtils.getTodayCommon();
+            UpdateBuilder<TaskDataBeanDto, Long> updateBuilder = mTaskDto.updateBuilder();
+            Where<TaskDataBeanDto, Long> where=updateBuilder.where();
+            updateBuilder.updateColumnValue(DbConst.TaskDataBean.COLUMN_TASKSTATUS, "F");
+            Where<TaskDataBeanDto, Long> whereABC = where.or(where.eq(DbConst.TaskDataBean.COLUMN_TASKSTATUS, "A"),
+                    where.eq(DbConst.TaskDataBean.COLUMN_TASKSTATUS, "B"),where.eq(DbConst.TaskDataBean.COLUMN_TASKSTATUS, "C"));
+            Where<TaskDataBeanDto, Long> whereData = where.and(where.lt(DbConst.TaskDataBean.COLUMN_TASKFAILTIME, current),where.eq(DbConst.TaskDataBean.COLUMN_USERCODE, App.getInstance().getUserCode()));
+            where.and(whereData,whereABC);
+            mTaskDto.update(updateBuilder.prepare());
+
+
+
+
+equalsIgnoreCase【不考虑大小写的比较】
+
+
+
+
+数据库只有在正式发版之后，才会修改版本号，再次之前都是一个版本号，所以在没发布正式版本之前每次修改数据库字段后都删除数据库
+
+
+手动给文件权限
+  String command = "chmod 777 " + file;
+  Runtime runtime = Runtime.getRuntime();
+  Process proc = runtime.exec(command);
+
+
+okhttp和rxjava对于网络请求
+返回的实体类只有一级的话，不用写节点，直接在实体类里面写属性就好
+如果返回值没有基础解析的类，也不用写基础解析的类，比如：<BaseResp<List<BeanRespWrite>>>（返回值用需要基本解析类），List<BeanRespWrite>（不需要）
+
+
+
+数组和集合使用之前都需要实例化，且，数据必须给出长度。
+
+
+使用jadx_jb51进行反编辑后，名字为org的包中所含内容才是源app的代码
+
+HttpClient在android6.0以上被去掉了，如果还想在android6.0以上的版本使用HttpClient，如下方法可借鉴：
+-eclipse
+libs中加入
+org.apache.http.legacy.jar
+上面的jar包在：**\android-sdk-windows\platforms\android-23\optional下（需要下载android 6.0的SDK）
+-android studio
+在相应的module下的build.gradle中加入：
+android {
+useLibrary ‘org.apache.http.legacy’
+}
+
+
+android中的集中多线程实现（4种）：
+1、Activity.runOnUiThread(Runnable)，2、View.psot(Runable);View.postDelay(Runnable,long)，3、Handler，4、AsyncTask
+
+
+
+//拍照
+ tempFile = new File(dir, "/temp_photo" + System.currentTimeMillis() + "_" + PHOTO_FILE_NAME);
+            //创建打开相机的intent  将路径作为参数传给intent
+            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            if (android.os.Build.VERSION.SDK_INT < 24) {
+                // 7.0以下系统走此分支
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(tempFile));
+            } else {
+                //兼容android7.0 使用共享文件的形式
+                ContentValues contentValues = new ContentValues(1);
+                contentValues.put(MediaStore.Images.Media.DATA, tempFile.getAbsolutePath());
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, this.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues));
+            }
+            // 开启一个带有返回值的Activity，请求码为PHOTO_REQUEST_CAREMA
+            startActivityForResult(intent, PHOTO_REQUEST_CAREMA);  //打开相机
+
+
+
+
+
+MVP
+V，view里面实现的接口就是用来和layout对接的，刷新界面数据什么的；；这里主要是包含了Activity的一系列关于UI操作，
+然后用我们的Activity是实现，这样Presenter就可以调用了。
+
+
+
+关于程序每一层的写法
+service只写与网络相关的东西   对于数据库的操作都写在dao里，针对每一个表的数据库操作都写一个对应的dao
+data文件夹下为一个dao文件夹（用于存储每个数据表对应的dao），一个entity文件夹（用于存储数据表的bean类），一个DatabaseHelper文件（存储创建数据库及其表的命令），
+一个DbConst文件（存储数据库的别名）
+
+
+
+用RxPermission申请权限，不用重写onRequestPermissionsResult，因为rxjava自己本身就重写完了  accept就是相当于onRequestPermissionsResult，重写的方法
+在使用存储权限前，要哦先判断一下是否请求权限成功
+
+
+事务可以理解为多线程，加快数据处理速度
+
+自定义的application创建完成之后一定要在Manifest.xml做一下声明
+
+
+
+
+第三方登录   QQ你微信简单，微信需要些个activity    QQ在第三方的包里就有
+
+
+//OnEditorAction 防止执行两次
+        int actionId = 0;
+        KeyEvent event = null;
+        if (actionId == EditorInfo.IME_ACTION_SEND || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
+            switch (event.getAction()) {
+                case KeyEvent.ACTION_UP:
+                    String mailNo = mBarcodeEt.getText().toString();
+                    mailNo = mailNo.toUpperCase();
+                    onScan(mailNo);
+                    return true;
+                default:
+                    return true;
+            }
+        }
+
+HTTP协议：超文本传输协议
+
+
+三次握手：
+1、客户端 发送SYN（同步序列编号）（syn=j）到服务端，进入SYN_SENT（传输控制协议）状态，等待服务端确认
+2、服务端 接收SYN，确认SYN，确认过的SYN为ACK（确认字符、命令）（syn+1），向客户端发送已经确认过的ACK及服务端自身第一个SYN（syn=k），即发送两个部分：SYN+ACK
+3、客户端接收服务端发送的SYN+ACK，向服务端发送ACK(ack=k+1），发送完毕，服务端接收到后，双方进入TCP协议（TCP连接成功），完成三次握手
+
+TCP/IP协议（传输控制协议/因特网互联协议/网络通讯协议）：
+TCP负责发现传输的问题，一有问题就发出信号，要求重新传输，直到所有数据安全正确地传输到目的地。而IP是给因特网的每一台联网设备规定一个地址。
+TCP/IP四层模型：应用层、传输层、互联网层、网络访问层
+
+HttpClient的3种超时：
+/* 从连接池中取连接的超时时间 */
+ConnManagerParams.setTimeout(params, 1000);
+/* 连接超时 */
+HttpConnectionParams.setConnectionTimeout(params, 2000);
+/* 请求超时 */
+HttpConnectionParams.setSoTimeout(params, 4000);
+
+
+
+
+public static String post(String url, NameValuePair... params) {//这三个点（省略号）表示 参数是多个
+
+
+io表示流（输入输出流），文件下载时，基本都是以流的方式进行下载的
+文件上传，以流或者字节上传
+
+
+
+
+
+
+所谓单例  其实就是 判断一下这个类的对象是否为空，为空的话重新new一下
+构造方法私有化，全局变量静态化，懒汉模式创造单例
+
+
+
+getDecorView()
+DecorView为整个Window界面的最顶层View。 二、DecorView只有一个子元素为LinearLayout。代表整个Window界面，包含通知栏，标题栏，内容显示栏三块区域。 三、LinearLayout里有两个FrameLayout子元素。 (20)为标题栏显示界面。只有一个TextView显示应用
+
+ /**  要在xml文件中设置edittext的属性android:imeOptions="actionDone"
+     * 软键盘回车监听事件
+     * 结合butterknife
+     */
+    @OnEditorAction(R.id.edit_input_two)
+    public boolean OnEditorAction(KeyEvent keyEvent) {
+        Toast.makeText(this, "" + mInputTwoEt.getText().toString(), Toast.LENGTH_SHORT).show();
+        mInputTwoEt.setText("" + mInputTwoEt.getText().toString() + "+++");
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(getWindow().getDecorView().getWindowToken(), 0);
+        return true;
+    }
+
+
+
+收回软键盘（在activity加载时无效）
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(getWindow().getDecorView().getWindowToken(), 0);
+加载activity时隐藏软键盘：
+AndroidMainFest.xml文件中配置  android:windowSoftInputMode="stateHidden"  或  android:windowSoftInputMode="adjustPan"
+或者
+在能获取到软键盘的控件的父级布局设置  （此方法存在不足：EditText  没有了焦点，如果设置了<requestFocus />  就无法得到光标闪烁的效果）
+  android:focusable="true"
+  android:focusableInTouchMode="true"
+
+
+
+
+ButterKnife onclick点击事件没反应 如：compile 'com.jakewharton:butterknife:8.8.1'
+在app.build.gradle中添加依赖 annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+
+
+
