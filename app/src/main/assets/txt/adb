@@ -1,0 +1,173 @@
+adb命令安装apk
+https://blog.csdn.net/true_maitian/article/details/70803820
+
+一、开发背景：
+        当开发设备没有usb接口，无法进行常规的调试时使用（如没有usb接口智能家居设备）；
+
+二、环境配置：
+
+        首先需要配置一个adb环境，让cmd.exe找到adb；
+        在系统变量中path变量后面添加：（如果没有分号需要添加分号）
+        C:\Users\LENOVO\AppData\Local\Android\Sdk\platform-tools（改地址是android sdk 中platform-tools路径）
+        保存即可
+
+三、测试环境
+
+        命令是
+        c:\Users\name>adb
+        如果成功：
+        将会出现一打断文字，开头一行为：
+        Android Debug Bridge version 1.039
+        ....
+
+四、配置相同的网关
+        1. cmd->确定->ipconfig->获取到自己的ip地址
+        192.168.3.133（假设是这个，那么ip的网关是“3”）；
+        2. 那么你无usb的Android设备需要连接相同网关的wifi网络：
+        如：192.168.3.102，不然无法使用。
+
+五、使用
+         cmd
+         （1）adb connect 192.168.3.102
+         成功：already connected to 192.168.3.102:5555
+         意思是连接ip地址为192.168.3.102的设备，并进行调试
+         最后在Android studio 运行，将会弹出窗口提示可运行设备。
+         这样就可以再Android studio上看到相应的dubug调试代码了。
+
+        （2）adb install app.apk
+         安装桌面的上的app.apk，此处应该注意需要统一路径。比如如果你的apk放在桌面，需要先cd Desktop切换到桌面。然后执行命令；
+
+        （3）adb install -s app.apk
+          安装到sd卡。
+多个设备连接情况下：adb -s 192.168.137.90 install app-release.apk
+
+
+        （4）启动apk
+         adb shell am start -n 包名/类名
+有多个设备连接的情况下：adb -s 192.168.137.90 shell am start -n com.example.lenovo.textviewspannerdalogexercise/com.example.lenovo.textviewspannerdalogexercise.MainActivity
+
+        （5）关闭apk
+         adb shell am force-stop 包名
+
+        （6）打开相机
+         adb shell am start -n com.android.camera/.Camera
+
+        （7）获取设备屏幕尺寸
+         adb shell wm size
+有多个设备连接的情况下：adb -s 192.168.137.90 shell wm size
+
+
+（8）删除文件
+         adb uninstall 包名
+          如：删除应用宝
+         adb uninstall com.tencent.android.qqdownloader
+     有多个设备连接的情况下：
+  adb -s 192.168.137.90 uninstall com.example.lenovo.textviewspannerdalogexercise
+
+
+（9）打开adb
+         adb shell
+
+        （10）查看mac地址
+         adb shell 切换到root@设备：/ #  busybox ifconfig
+
+        （11）查看adb端口是否被占用
+         netstat -ano | findstr "5037"
+
+  说明：此处5037为adb默认端口，通过后面的pid可在任务管理器查找到相应的占用的应用。
+ 
+常见问题
+adb通过wifi调试Android设备，在连接过程中经常显示以下错误：
+Windows下：unable to connect to 192.168.1.110:5555: cannot connect to 192.168.1.110:5555: 由于目标计算机积极拒绝，无法连接。 (10061)
+
+Linux下：unable to connect to 192.168.1.110:5555
+
+在通过多次尝试后终于找到一下解决办法，只需要执行以下步骤就可以adb wifi连接问题，根本不需要在Android设备上安装什么Adb Wireless之类的软件，更不用root我们的Android设备。
+
+解决办法
+第一步：Android设备开启USB调试，并且通过USB线连接到电脑。
+第二步：在终端执行以下命令”adb tcpip 5555“。
+第三步：在终端执行以下命令”adb connect 192.168.1.110“(192.168.1.110为Android设备的IP地址)。此时拔出USB线，应该就可以adb通过wifi调试Android设备。
+
+注意
+1.Android设备需要开启USB调试。
+2.Android设备要和PC在同一个局域网。
+3.adb wifi连接成功后应该拔出USB线，不然出现adb同时连接两个设备的问题。
+4.执行命令”adb tcpip 5555“后可能需要重新开启USB调试。
+5.断开wifi连接：adb disconnect
+
+
+
+Android adb 命令（附带"more than one device and emulator"错误）
+error: more than one device/emulator
+adb: error: failed to get feature set: more than one device/emulator
+- waiting for device -
+error: more than one device/emulator
+常用的adb命令应该是用的比较熟悉了，如
+
+Adb shell
+Adb remount
+Adb devices
+Adb install
+Adb uninstall
+Adb pull
+Adb push
+
+这些都是本地adb，那怎样通过网络接口连接另外一台设备呢？那这里就稍微总结一下网络adb方面的东西。
+Adb connect IP:Port
+这个命令中IP表示目标设备的ip地址，如192.168.196.37
+
+Port表示这个台设备的adb端口，默认是5555，所以，当需要连接该IP的设备时：
+
+根据实际的操作，返回了already connected
+
+当通过connect命令连接上之后，接下来的操作就跟本地adb是一样的了，这里执行如下的命令：
+
+可以看到，当我们执行adb shell 后，通过adb  devices命令看到到有2个终端设备，我经过多次试验都是两个，这让我不太明白，而且这两个都是指向同一个设备！
+
+既然是2个，那我们在执行adb命令时，可能会出现”more than one device and emulator”（当前连接有多个设备）解决办法是：先通过adbdevices 命令查看当前连接有哪些设备，然后通过-s命令指定某个设备。
+
+是的，比如当前连接了2个设备，在执行adb install命令时就可以通过–s 参数来指定当前操作的设备，如下：
+adb -s 192.168.137.90 install app-release.apk
+（前提是先cd到a.apk的目录，可以通过adb push命令将计算机的apk文件复制到android设备的某个目录下，当然如果是挂载SDCard的形式，那么就直接cd到挂载目录即可） ，这时就不会出现”more than one device and emulator”的错误
+
+am start -n ｛包(package)名｝/｛包名｝.{活动(activity)名称}
+一个网上最简单的例子：
+am start -n com.android.calculator2/com.android.calculator2.Calculator
+ 
+adb命令模拟触屏、点击、滑动、输入等事件
+https://blog.csdn.net/lei7143/article/details/79088095
+
+https://blog.csdn.net/applezp/article/details/7651885
+
+https://blog.csdn.net/fxdaniel/article/details/45846333
+
+输出所有event设备的基本信息
+adb -s 192.168.137.90 shell getevent –p
+
+将type、code、value以对应的常量名称显示
+adb -s 192.168.137.90 shell getevent -p –l
+
+模拟触摸事件：input  tab
+adb -s 192.168.137.90 shell input tap 1 500
+ tap 是模拟touch屏幕的事件，上面这个命令就是点击屏幕横坐标为1,纵坐标为 300位置
+
+如果触摸到一个button就是点击事件
+
+模拟按键：input keyevent
+模拟按键，sendevent用起来比较繁琐，可以用input keyevent代替
+adb -s 192.168.137.90 shell 加上下面的命令
+
+input keyevent 3    // Home  （KeyEvent.java）
+input keyevent 4    // Back返回上一页
+input keyevent 19    //Up 上一个控件  实际上是上滑
+input keyevent 20    //Next 下一个控件  实际上是下滑
+input keyevent 25 音量
+
+adb -s 192.168.137.90 shell input keyevent 82   //屏幕解锁
+
+adb shell screencap –p 截屏相关
+
+模拟滑动事件：input  swipe
+adb -s 192.168.137.90 shell input swipe 800 800 500 500
+上面的命令表示从横坐标为800，纵坐标为800的位置，滑动到横坐标为500,纵坐标为 500的位置，这是上滑，反之下滑
