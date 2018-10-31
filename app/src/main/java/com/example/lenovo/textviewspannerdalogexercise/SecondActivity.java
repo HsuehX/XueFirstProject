@@ -21,6 +21,7 @@ import com.example.lenovo.textviewspannerdalogexercise.activity.ReadWenJianActiv
 import com.example.lenovo.textviewspannerdalogexercise.activity.RecyclerviewActivity;
 import com.example.lenovo.textviewspannerdalogexercise.activity.RefreshListActivity;
 import com.example.lenovo.textviewspannerdalogexercise.activity.WheelViewDaActivity;
+import com.example.lenovo.textviewspannerdalogexercise.activity.WriteDetailedActivity;
 import com.example.lenovo.textviewspannerdalogexercise.activity.ZeroBuweiActivity;
 import com.example.lenovo.textviewspannerdalogexercise.activity.internet.SimpleRetrofitActivity;
 import com.example.lenovo.textviewspannerdalogexercise.activity.onactivityresult.FirstActivity;
@@ -73,7 +74,8 @@ public class SecondActivity extends Activity {
     TextView tv_copy_wechat_circle;
     @Bind(R.id.tv_chat_link)
     TextView tv_chat_link;
-
+    @Bind(R.id.tv_write)
+    TextView tv_write;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -85,7 +87,7 @@ public class SecondActivity extends Activity {
     @OnClick({R.id.refresh_up_tv, R.id.aes_tv, R.id.buwei_tv, R.id.gif_tv, R.id.wenjian_tv, R.id.phonetic_writing_tv,
             R.id.audiowweixin_tv, R.id.net_picture_size_tv, R.id.original_http_network_tv, R.id.activityresult_tv,
             R.id.head_portrait_tv, R.id.recyclerview_tv, R.id.chat_tv, R.id.wheelview_tv, R.id.evaluation_tv,
-            R.id.simple_retrofit_tv, R.id.tv_copy_wechat_circle, R.id.tv_chat_link})
+            R.id.simple_retrofit_tv, R.id.tv_copy_wechat_circle, R.id.tv_chat_link, R.id.tv_write})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.refresh_up_tv:
@@ -159,6 +161,10 @@ public class SecondActivity extends Activity {
             case R.id.tv_chat_link:
                 Intent tv_chat_linkIntent = new Intent(SecondActivity.this, ChatLinkActivity.class);
                 startActivity(tv_chat_linkIntent);
+                break;
+            case R.id.tv_write:
+                Intent tv_writeIntent = new Intent(SecondActivity.this, WriteDetailedActivity.class);
+                startActivity(tv_writeIntent);
                 break;
             default:
                 break;

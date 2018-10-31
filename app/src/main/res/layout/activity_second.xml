@@ -300,6 +300,17 @@
                     android:gravity="center"
                     android:text="CharLink"
                     android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_write"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:background="@color/action_text_color_normal"
+                    android:gravity="center"
+                    android:text="写入"
+                    android:textSize="18sp" />
             </LinearLayout>
         </LinearLayout>
 
