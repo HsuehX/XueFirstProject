@@ -2,6 +2,7 @@ package com.example.lenovo.textviewspannerdalogexercise.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
@@ -45,6 +46,8 @@ public class WriteDetailedActivity extends Activity implements View.OnClickListe
         writeTxtToFile("Wx:lcti1314", filePath, fileName);
     }
 
+    private int frequency = 100;
+
     // 将字符串写入到文本文件中
     private void writeTxtToFile(String strcontent, String filePath, String fileName) {
         //生成文件夹之后，再生成文件，不然会出错
@@ -52,7 +55,8 @@ public class WriteDetailedActivity extends Activity implements View.OnClickListe
 
         String strFilePath = filePath + fileName;
         // 每次写入时，都换行写
-        String strContent = strcontent + "\r\n";
+//        final String[] strContent = {strcontent + "\r\n"};
+        final String[] strContent = {""};
         try {
             File file = new File(strFilePath);
             if (!file.exists()) {
@@ -60,13 +64,32 @@ public class WriteDetailedActivity extends Activity implements View.OnClickListe
                 file.getParentFile().mkdirs();
                 file.createNewFile();
             }
-            RandomAccessFile raf = new RandomAccessFile(file, "rwd");
+            final RandomAccessFile raf = new RandomAccessFile(file, "rwd");
             raf.seek(file.length());
-            raf.write(strContent.getBytes());
+            raf.write(strContent[0].getBytes());
 
-            for (int i = 0; i < 10; i++) {
-                strContent = strContent + i + "";
-                raf.write(strContent.getBytes());
+            final Handler handler = new Handler();
+            handler.post(new Runnable() {
+                private int k = 0;
+
+                public void run() {
+                    k++;
+                    if (k <= frequency) {
+                        strContent[0] = k + "hello";
+                        mReadTv.setText(strContent[0]);
+                        handler.postDelayed(this, 10);
+                    }
+                }
+            });
+
+            for (int i = 0; i < frequency; i++) {
+                try {
+                    Thread.currentThread().sleep(10);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                strContent[0] = i + "hello" + "\r\n";
+                raf.write(strContent[0].getBytes());
             }
             raf.close();
         } catch (Exception e) {
