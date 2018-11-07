@@ -294,7 +294,6 @@
                     android:id="@+id/tv_chat_link"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
                     android:layout_weight="1"
                     android:background="@color/action_text_color_normal"
                     android:gravity="center"
@@ -310,6 +309,17 @@
                     android:background="@color/action_text_color_normal"
                     android:gravity="center"
                     android:text="写入"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tv_accelerometer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1"
+                    android:background="@color/action_text_color_normal"
+                    android:gravity="center"
+                    android:text="accelerometer"
                     android:textSize="18sp" />
             </LinearLayout>
         </LinearLayout>
