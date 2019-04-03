@@ -322,6 +322,24 @@
                     android:text="accelerometer"
                     android:textSize="18sp" />
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tv_asynchronousLockActivity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/action_text_color_normal"
+                    android:gravity="center"
+                    android:text="AsynchronousLockActivity"
+                    android:textSize="18sp" />
+            </LinearLayout>
         </LinearLayout>
 
     </ScrollView>

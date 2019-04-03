@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.lenovo.textviewspannerdalogexercise.activity.AccelerometerSensorActivity;
 import com.example.lenovo.textviewspannerdalogexercise.activity.AesEncryptionActivity;
+import com.example.lenovo.textviewspannerdalogexercise.activity.AsynchronousLockActivity;
 import com.example.lenovo.textviewspannerdalogexercise.activity.AudioWeixinActivity;
 import com.example.lenovo.textviewspannerdalogexercise.activity.CharActivity;
 import com.example.lenovo.textviewspannerdalogexercise.activity.ChatLinkActivity;
@@ -79,6 +80,8 @@ public class SecondActivity extends Activity {
     TextView tv_write;
     @Bind(R.id.tv_accelerometer)
     TextView tv_accelerometer;
+    @Bind(R.id.tv_asynchronousLockActivity)
+    TextView tv_asynchronousLockActivity;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -90,7 +93,8 @@ public class SecondActivity extends Activity {
     @OnClick({R.id.refresh_up_tv, R.id.aes_tv, R.id.buwei_tv, R.id.gif_tv, R.id.wenjian_tv, R.id.phonetic_writing_tv,
             R.id.audiowweixin_tv, R.id.net_picture_size_tv, R.id.original_http_network_tv, R.id.activityresult_tv,
             R.id.head_portrait_tv, R.id.recyclerview_tv, R.id.chat_tv, R.id.wheelview_tv, R.id.evaluation_tv,
-            R.id.simple_retrofit_tv, R.id.tv_copy_wechat_circle, R.id.tv_chat_link, R.id.tv_write,R.id.tv_accelerometer})
+            R.id.simple_retrofit_tv, R.id.tv_copy_wechat_circle, R.id.tv_chat_link, R.id.tv_write, R.id.tv_accelerometer,
+            R.id.tv_asynchronousLockActivity})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.refresh_up_tv:
@@ -171,7 +175,12 @@ public class SecondActivity extends Activity {
                 break;
             case R.id.tv_accelerometer:
                 Intent tv_accelerometer = new Intent(SecondActivity.this, AccelerometerSensorActivity.class);
-                startActivity(tv_accelerometer); break;
+                startActivity(tv_accelerometer);
+                break;
+            case R.id.tv_asynchronousLockActivity:
+                Intent tv_asynchronousLockActivity = new Intent(SecondActivity.this, AsynchronousLockActivity.class);
+                startActivity(tv_asynchronousLockActivity);
+                break;
             default:
                 break;
         }
