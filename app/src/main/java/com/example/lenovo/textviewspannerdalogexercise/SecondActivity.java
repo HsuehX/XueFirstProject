@@ -11,6 +11,7 @@ import com.example.lenovo.textviewspannerdalogexercise.activity.AccelerometerSen
 import com.example.lenovo.textviewspannerdalogexercise.activity.AesEncryptionActivity;
 import com.example.lenovo.textviewspannerdalogexercise.activity.AsynchronousLockActivity;
 import com.example.lenovo.textviewspannerdalogexercise.activity.AudioWeixinActivity;
+import com.example.lenovo.textviewspannerdalogexercise.activity.BroadcastTestStringActivity;
 import com.example.lenovo.textviewspannerdalogexercise.activity.CharActivity;
 import com.example.lenovo.textviewspannerdalogexercise.activity.ChatLinkActivity;
 import com.example.lenovo.textviewspannerdalogexercise.activity.EvaluationActivity;
@@ -82,6 +83,8 @@ public class SecondActivity extends Activity {
     TextView tv_accelerometer;
     @Bind(R.id.tv_asynchronousLockActivity)
     TextView tv_asynchronousLockActivity;
+    @Bind(R.id.tv_broadcast_test_string)
+    TextView tv_broadcast_test_string;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -94,7 +97,7 @@ public class SecondActivity extends Activity {
             R.id.audiowweixin_tv, R.id.net_picture_size_tv, R.id.original_http_network_tv, R.id.activityresult_tv,
             R.id.head_portrait_tv, R.id.recyclerview_tv, R.id.chat_tv, R.id.wheelview_tv, R.id.evaluation_tv,
             R.id.simple_retrofit_tv, R.id.tv_copy_wechat_circle, R.id.tv_chat_link, R.id.tv_write, R.id.tv_accelerometer,
-            R.id.tv_asynchronousLockActivity})
+            R.id.tv_asynchronousLockActivity, R.id.tv_broadcast_test_string})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.refresh_up_tv:
@@ -180,6 +183,10 @@ public class SecondActivity extends Activity {
             case R.id.tv_asynchronousLockActivity:
                 Intent tv_asynchronousLockActivity = new Intent(SecondActivity.this, AsynchronousLockActivity.class);
                 startActivity(tv_asynchronousLockActivity);
+                break;
+            case R.id.tv_broadcast_test_string:
+                Intent tv_broadcast_test_stringLockActivity = new Intent(SecondActivity.this, BroadcastTestStringActivity.class);
+                startActivity(tv_broadcast_test_stringLockActivity);
                 break;
             default:
                 break;
